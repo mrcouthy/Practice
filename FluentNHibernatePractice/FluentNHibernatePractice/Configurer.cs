@@ -24,7 +24,7 @@ public class NHibernateHelper
             .Database(MsSqlConfiguration.MsSql2008
               .ConnectionString(
               @"Server=test;initial catalog=NhibernatePractice;
-		user=dbadmb;") // Modify your ConnectionString
+		user=id;") // Modify your ConnectionString
                           .ShowSql()
             )
             .Mappings(m =>
