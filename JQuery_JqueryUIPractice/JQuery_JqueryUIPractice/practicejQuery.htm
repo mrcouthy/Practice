@@ -12,7 +12,14 @@
             $("a").click(function (event) {
                 alert("Thanks for visiting!");
                 event.preventDefault();
+                $("a").addClass("test");
             });
         });</script>
 </body>
+<style>
+    a.test {
+        font-weight: bold;
+        font-style:normal;
+    }
+</style>
 </html>
