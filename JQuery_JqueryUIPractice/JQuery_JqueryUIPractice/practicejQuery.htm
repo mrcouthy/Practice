@@ -8,18 +8,13 @@
     <a href="http://jquery.com/">jQuery</a>
     <script src="scripts\jquery-2.1.1.js"></script>
     <script>
+     
         $(document).ready(function () {
-            $("a").click(function (event) {
-                alert("Thanks for visiting!");
-                event.preventDefault();
-                $("a").addClass("test");
-            });
-        });</script>
+            $("a").click(function(){
+                $(this).hide("slow");
+            })
+        });
+    </script>
 </body>
-<style>
-    a.test {
-        font-weight: bold;
-        font-style:normal;
-    }
-</style>
+ 
 </html>
