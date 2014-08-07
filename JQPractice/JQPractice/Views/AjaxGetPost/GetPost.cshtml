@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "GetPost";
+}
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+<input type="button" id ="MyButton" value ="Date" />
+
+<h2> $.ajax </h2>
+ <p id="rData">
+     test
+</p>
+
+<script type="text/jscript">
+    
+    $('#MyButton').click(function () {
+        get_ajax_data();
+    });
+
+    function get_ajax_data() {
+        $.ajax({
+            url: "/AjaxGetPost/TellMeDate",
+            success: function (msg) {
+                $('#rData').html(msg);
+            }
+        });
+    }
+</script>
