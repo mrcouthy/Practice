@@ -17,5 +17,16 @@ namespace MvcApplication1.Controllers
         {
             return DateTime.Today.ToString();
         }
+
+        public class Person
+        {
+            public string Name { get; set; }
+            public int Age { get; set; }
+        }
+
+        public ActionResult GetPerson()
+        {
+            return Json(new Person { Name = "Ram", Age = 20 },JsonRequestBehavior.AllowGet);
+        }
     }
 }

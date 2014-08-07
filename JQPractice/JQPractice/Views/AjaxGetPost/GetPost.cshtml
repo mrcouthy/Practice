@@ -2,25 +2,41 @@
     ViewBag.Title = "GetPost";
 }
 <script src="~/Scripts/jquery-1.7.1.js"></script>
-<input type="button" id ="MyButton" value ="Date" />
-
+<input type="button" id ="DateButton" value ="Date" />
+<input type="button" id ="PersonButton" value ="Person" />
 <h2> $.ajax </h2>
- <p id="rData">
+ <p id="phDate">
+     test Date
+</p>
+
+ <p id="phPerson">
      test
 </p>
 
+@*get simple data:*@
 <script type="text/jscript">
     
-    $('#MyButton').click(function () {
-        get_ajax_data();
-    });
-
+    $('#DateButton').click(get_ajax_data);
     function get_ajax_data() {
         $.ajax({
             url: "/AjaxGetPost/TellMeDate",
             success: function (msg) {
-                $('#rData').html(msg);
+                $('#phDate').html(msg);
             }
         });
     }
+</script>
+@*get complex data*@
+<script type="text/jscript">
+
+    $('#PersonButton').click(getpersonData);
+    function getpersonData() {
+        $.ajax({
+            url: "/AjaxGetPost/GetPerson",
+            success: function (msg) {
+                $('#phPerson').html(JSON.stringify(msg));
+            }
+        });
+    }
+    
 </script>
