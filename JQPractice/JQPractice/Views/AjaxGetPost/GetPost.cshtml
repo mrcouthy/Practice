@@ -45,9 +45,12 @@
                 for (var i = 0; i < msg.length; i++) {
                     var row = $("<tr><td> Name =" + msg[i].Name + "</td> <td> Age = "+ msg[i].Age  +"</td></tr> ");
                     $('#phPerson').append(row);
-                    
                 }
                 
+                $.each(msg, function (index, item) {
+                    var row = $("<tr><td> Name =" + item.Name + "</td> <td> Age = " + item.Age + "</td></tr> ");
+                    $('#phPerson').append(row);
+                });
             }
         });
     }
