@@ -30,5 +30,14 @@ namespace MvcApplication1.Controllers
             p.Add(new Person { Name = "Ram", Age = 20 });
             return Json(p,JsonRequestBehavior.AllowGet);
         }
+
+
+
+
+        public ActionResult SetPerson(string username, string firstname, string lastname)
+        {
+            Person p = new Person { Name = username, Age = 1 };
+            return Json(p, JsonRequestBehavior.AllowGet);
+        }
     }
 }
