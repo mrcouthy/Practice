@@ -5,6 +5,7 @@
 <input type="button" id="DateButton" value="Date" />
 <input type="button" id="PersonButton" value="Person" />
 <input type="button" id="SendData" value="Send Data" />
+<input type="button" id="SendComplexData" value="Send Complex Data" />
 
 <h2>$.ajax </h2>
 <p id="phDate">
@@ -63,13 +64,11 @@
     $('#SendData').click(sendpersonData);
     function sendpersonData() {
 
-        var user = "mrRam";
-        var firstname = "Ram";
-        var lastname = "Bhai";
+        var name = "Ram";
+        var age = 15;
         var params = JSON.stringify({
-            username: user,
-            firstname: firstname,
-            lastname: lastname
+            name: name,
+            age: age
         });
 
         $.ajax
@@ -83,9 +82,33 @@
                 alert(result.Age);
             }
         });
-
-
-
     }
-
 </script>
+
+
+@*Send Complex data from Client to Server*@
+<script type="text/jscript">
+
+    $('#SendComplexData').click(sendpersonData);
+    function sendpersonData() {
+
+        var name = "I am little complex";
+        var age = 15;
+        var params = JSON.stringify({
+            name: name,
+            age: age
+        });
+
+        $.ajax
+        ({
+            type: "POST",
+            url: "/AjaxGetPost/SetComplexPerson",
+            data: params,
+            contentType: "application/json; charset=utf-8",
+            dateType: "json",
+            success: function (result) {
+            }
+        });
+    }
+</script>
+

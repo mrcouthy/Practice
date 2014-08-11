@@ -34,10 +34,15 @@ namespace MvcApplication1.Controllers
 
 
 
-        public ActionResult SetPerson(string username, string firstname, string lastname)
+        public ActionResult SetPerson(string name, int age)
         {
-            Person p = new Person { Name = username, Age = 1 };
+            Person p = new Person { Name = name, Age = age };
             return Json(p, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SetComplexPerson(Person person)
+        {
+            return Json(person, JsonRequestBehavior.AllowGet);
         }
     }
 }
