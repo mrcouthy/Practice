@@ -4,6 +4,8 @@
 <script src="~/Scripts/jquery-1.7.1.js"></script>
 <input type="button" id ="DateButton" value ="Date" />
 <input type="button" id ="PersonButton" value ="Person" />
+<input type="button" id ="SendData" value ="Send Data" />
+
 <h2> $.ajax </h2>
  <p id="phDate">
      test Date
@@ -11,6 +13,10 @@
 
  <p id="phPerson">
      test
+</p>
+
+ <p id="send">
+     send
 </p>
 
 @*get simple data:*@
@@ -35,8 +41,34 @@
             url: "/AjaxGetPost/GetPerson",
             success: function (msg) {
                 $('#phPerson').html(JSON.stringify(msg));
+
+                for (var i = 0; i < msg.length; i++) {
+                    var row = $("<tr><td> Name =" + msg[i].Name + "</td> <td> Age = "+ msg[i].Age  +"</td></tr> ");
+                    $('#phPerson').append(row);
+                    
+                }
+                
             }
         });
     }
     
+</script>
+
+@*SendData from Client to Server*@
+<script type="text/jscript">
+
+    $('#SendData').click(sendpersonData);
+    function sendpersonData() {
+        $.ajax({
+            url: "/AjaxGetPost/GetPerson",
+            success: function (msg) {
+                $('#phPerson').html(JSON.stringify(msg));
+                $.each(msg, function () {
+                    var row = $("<tr><td>" + msg.Name + "</td></tr> ");
+                    $('#phPerson').append(row);
+                });
+            }
+        });
+    }
+
 </script>
