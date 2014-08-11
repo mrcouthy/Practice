@@ -26,7 +26,9 @@ namespace MvcApplication1.Controllers
 
         public ActionResult GetPerson()
         {
-            return Json(new Person { Name = "Ram", Age = 20 },JsonRequestBehavior.AllowGet);
+            IList<Person> p = new List<Person>();
+            p.Add(new Person { Name = "Ram", Age = 20 });
+            return Json(p,JsonRequestBehavior.AllowGet);
         }
     }
 }
