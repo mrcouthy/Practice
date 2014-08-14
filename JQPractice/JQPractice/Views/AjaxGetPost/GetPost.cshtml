@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "GetPost";
+}
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+<input type="button" id="DateButton" value="Date" />
+<input type="button" id="PersonButton" value="Person" />
+<input type="button" id="SendData" value="Send Data" />
+<input type="button" id="SendComplexData" value="Send Complex Data" />
+
+<h2>$.ajax </h2>
+<p id="phDate">
+    test Date
+</p>
+
+<p id="phPerson">
+    test
+</p>
+
+<p id="send">
+    send
+</p>
+
+@*get simple data:*@
+<script type="text/jscript">
+
+    $('#DateButton').click(get_ajax_data);
+    function get_ajax_data() {
+        $.ajax({
+            url: "/AjaxGetPost/TellMeDate",
+            success: function (msg) {
+                $('#phDate').html(msg);
+            }
+        });
+    }
+</script>
+@*get complex data*@
+<script type="text/jscript">
+
+    $('#PersonButton').click(getpersonData);
+    function getpersonData() {
+        $.ajax({
+            url: "/AjaxGetPost/GetPerson",
+            success: function (msg) {
+                $('#phPerson').html(JSON.stringify(msg));
+
+                for (var i = 0; i < msg.length; i++) {
+                    var row = $("<tr><td> Name =" + msg[i].Name + "</td> <td> Age = " + msg[i].Age + "</td></tr> ");
+                    $('#phPerson').append(row);
+                }
+
+                $.each(msg, function (index, item) {
+                    var row = $("<tr><td> Name =" + item.Name + "</td> <td> Age = " + item.Age + "</td></tr> ");
+                    $('#phPerson').append(row);
+                });
+            }
+        });
+    }
+
+</script>
+
+@*SendData from Client to Server*@
+<script type="text/jscript">
+
+    $('#SendData').click(sendpersonData);
+    function sendpersonData() {
+
+        var name = "Ram";
+        var age = 15;
+        var params = JSON.stringify({
+            name: name,
+            age: age
+        });
+
+        $.ajax
+        ({
+            type: "POST",
+            url: "/AjaxGetPost/SetPerson",
+            data: params,
+            contentType: "application/json; charset=utf-8",
+            dateType: "json",
+            success: function (result) {
+                alert(result.Age);
+            }
+        });
+    }
+</script>
+
+
+@*Send Complex data from Client to Server*@
+<script type="text/jscript">
+
+    $('#SendComplexData').click(sendpersonData);
+    function sendpersonData() {
+
+        var name = "I am little complex";
+        var age = 15;
+        var params = JSON.stringify({
+            name: name,
+            age: age
+        });
+
+        $.ajax
+        ({
+            type: "POST",
+            url: "/AjaxGetPost/SetComplexPerson",
+            data: params,
+            contentType: "application/json; charset=utf-8",
+            dateType: "json",
+            success: function (result) {
+            }
+        });
+    }
+</script>
+
