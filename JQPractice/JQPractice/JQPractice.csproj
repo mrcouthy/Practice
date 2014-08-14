@@ -116,6 +116,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\editinplace.js" />
     <Content Include="Scripts\ember-debug.1.6.1.js" />
     <Content Include="Scripts\ember.min-1.6.1.js" />
     <Content Include="Scripts\ember.prod-1.6.1.js" />
@@ -132,6 +133,7 @@
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery.contextMenu.js" />
+    <Content Include="Scripts\jquery.editable.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
@@ -149,6 +151,8 @@
     <Content Include="Views\AjaxGetPost\FirstAjax.cshtml" />
     <Content Include="Views\JQUI\Index.cshtml" />
     <Content Include="Views\JQUI\CalculatedFields.cshtml" />
+    <Content Include="Views\JQUI\Toggle.cshtml" />
+    <Content Include="Views\JQUI\Editable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
