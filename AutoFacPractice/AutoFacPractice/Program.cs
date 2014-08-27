@@ -3,6 +3,7 @@ using DemoApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +15,14 @@ namespace AutoFacPractice
 
         static void Main(string[] args)
         {
+
             var builder = new ContainerBuilder();
-            builder.RegisterType<ConsoleOutput>().As<IOutput>();
-            builder.RegisterType<TodayWriter>().As<IDateWriter>();
+
+
+            //builder.RegisterType<ConsoleOutputAndExtra>().As<IOutput>();
+            //builder.RegisterType<TodayWriter>().As<IDateWriter>();
+            // builder.RegisterType<ConsoleOutput>().As<IOutput>();
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces();
             Container = builder.Build();
 
             // The WriteDate method is where we'll make use
