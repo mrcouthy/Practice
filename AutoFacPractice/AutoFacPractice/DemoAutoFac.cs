@@ -63,14 +63,16 @@ namespace DemoApp
 
     public class ConfigReader : AutoFacPractice.IConfigReader
     {
+        string _connfigSectionName;
         public ConfigReader(string connfigSectionName)
         {
+            _connfigSectionName = connfigSectionName;
             Console.Write(connfigSectionName);
         }
         public string ConfigString()
         {
-            Console.Write("ok");
-            return "";
+            Console.Write(_connfigSectionName);
+            return _connfigSectionName;
         }
     }
 }
