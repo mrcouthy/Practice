@@ -60,4 +60,17 @@ namespace DemoApp
             this._output.Write(DateTime.Today.ToShortDateString());
         }
     }
+
+    public class ConfigReader : AutoFacPractice.IConfigReader
+    {
+        public ConfigReader(string connfigSectionName)
+        {
+            Console.Write(connfigSectionName);
+        }
+        public string ConfigString()
+        {
+            Console.Write("ok");
+            return "";
+        }
+    }
 }
