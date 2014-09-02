@@ -11,7 +11,8 @@ namespace FluentNHibernatePractice
         static void Main(string[] args)
         {
           //  FirstPractice.DoPractice();
-            SecondPractice.SecondPractice.DoPractice();
+           // SecondPractice.SecondPractice.DoPractice();
+            OneToMany.Do();
         }
 
        

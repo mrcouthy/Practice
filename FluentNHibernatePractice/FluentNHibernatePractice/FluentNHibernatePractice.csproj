@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurer.cs" />
-    <Compile Include="SecondPractice.cs" />
+    <Compile Include="NHHelper.cs" />
+    <Compile Include="OneToMany.cs" />
+    <Compile Include="OnoToOnePractice.cs" />
     <Compile Include="FirstPractice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
