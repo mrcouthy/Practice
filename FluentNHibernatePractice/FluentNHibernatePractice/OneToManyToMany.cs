@@ -21,6 +21,11 @@ namespace FluentNHibernatePracticeOneToManyToMany
                 rpt.ParentList = new List<ParentOne>();
                 rpt.AddSelectedColumns(stcln1);
                 rpt.AddSelectedColumns(stcln2);
+
+                ChildOne c1 = new ChildOne();
+                c1.Name = "Ram";
+
+                stcln1.AddSelectedColumns(c1);
                 Helper.Create(rpt);
 
                 Helper.Select();
@@ -122,17 +127,28 @@ namespace FluentNHibernatePracticeOneToManyToMany
 
             public class ParentOne
             {
+                public ParentOne()
+                {
+                    ChildList = new List<ChildOne>();
+                }
                 public virtual int ParentId { get; set; }
                 public virtual int GrandParentIdInParenta { get; set; }
                 public virtual string Columns { get; set; }
                 public virtual string Alias { get; set; }
                 public virtual GrandParent GrandParent { get; set; }
+
+                public virtual IList<ChildOne> ChildList { get; set; }
+                public virtual void AddSelectedColumns(ChildOne parent)
+                {
+                    parent.MyParent  = this;
+                    ChildList.Add(parent);
+                }
             }
 
             public class ChildOne
             {
                 public virtual int ChildId { get; set; }
-                public virtual int ParentIDInChild { get; set; }
+                //public virtual int ParentIDInChild { get; set; }
                 public virtual string Name { get; set; }
                 public virtual ParentOne MyParent { get; set; }
             }
@@ -172,6 +188,7 @@ namespace FluentNHibernatePracticeOneToManyToMany
 
                     Id(x => x.ParentId).Column("ParentId").GeneratedBy.Identity();
                     References(x => x.GrandParent).Class<GrandParent>().Columns("GrandParentIdInParent");
+                    HasMany<ChildOne>(x => x.ChildList).Cascade.All().Inverse().KeyColumn("ParentIDInChild");
                     Map(x => x.Columns).Column("Columns").Not.Nullable();
                     Map(x => x.Alias).Column("Alias").Nullable();
                   
@@ -196,17 +213,16 @@ alter table ParentOne
             }
 
 
-            //public class ChildOneMap : ClassMap<ChildOne>
-            //{
-            //    public ChildOneMap()
-            //    {
-            //        Table("ChildOne");
-
-            //        Id(x => x.ChildId).Column("childId").GeneratedBy.Identity();
-            //        References(x => x.MyParent).Class<GrandParent>().Columns("ParentID");
-            //        Map(x => x.Name).Column("Name").Not.Nullable();
-            //    }
-            //}
+            public class ChildOneMap : ClassMap<ChildOne>
+            {
+                public ChildOneMap()
+                {
+                    Table("ChildOne");
+                    Id(x => x.ChildId).Column("childId").GeneratedBy.Identity();
+                    References(x => x.MyParent).Class<ParentOne>().Columns("ParentIDInChild");
+                    Map(x => x.Name).Column("Name").Not.Nullable();
+                }
+            }
             #endregion
 
         }
