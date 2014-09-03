@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NHibernate.Linq;
 
 
 namespace FluentNHibernatePracticeOneToManyToMany
@@ -21,6 +22,8 @@ namespace FluentNHibernatePracticeOneToManyToMany
                 rpt.AddSelectedColumns(stcln1);
                 rpt.AddSelectedColumns(stcln2);
                 Helper.Create(rpt);
+
+                Helper.Select();
 
                 //f.Create<Report>(rpt);
 
@@ -67,6 +70,32 @@ namespace FluentNHibernatePracticeOneToManyToMany
                     }
                     return false;
                 }
+
+
+                public static bool Select()
+                {
+                    using (var session = NHibernateHelper.OpenSession())
+                    {
+                        using (var transaction = session.BeginTransaction())
+                        {
+                            try
+                            {
+                                var result =  session.Query<GrandParent>( ).ToList();
+                                // session.Update(entity);
+                                //session.Get<T>(id);
+                                // session.Delete(entity);
+                                transaction.Commit();
+                                
+                            }
+                            catch
+                            {
+                                transaction.Rollback();
+                                throw;
+                            }
+                        }
+                    }
+                    return false;
+                }
             }
 
             #region POCO
@@ -86,7 +115,7 @@ namespace FluentNHibernatePracticeOneToManyToMany
                 public virtual IList<ParentOne> ParentList { get; set; }
                 public virtual void AddSelectedColumns(ParentOne parent)
                 {
-                    parent.Report = this;
+                    parent.GrandParent = this;
                     ParentList.Add(parent);
                 }
             }
@@ -94,10 +123,10 @@ namespace FluentNHibernatePracticeOneToManyToMany
             public class ParentOne
             {
                 public virtual int ParentId { get; set; }
-                public virtual int GrandParentIdInParent { get; set; }
+                public virtual int GrandParentIdInParenta { get; set; }
                 public virtual string Columns { get; set; }
                 public virtual string Alias { get; set; }
-                public virtual GrandParent Report { get; set; }
+                public virtual GrandParent GrandParent { get; set; }
             }
 
             public class ChildOne
@@ -142,9 +171,10 @@ namespace FluentNHibernatePracticeOneToManyToMany
                     Table("ParentOne");
 
                     Id(x => x.ParentId).Column("ParentId").GeneratedBy.Identity();
-                    References(x => x.Report).Class<GrandParent>().Columns("GrandParentIdInParent");
+                    References(x => x.GrandParent).Class<GrandParent>().Columns("GrandParentIdInParent");
                     Map(x => x.Columns).Column("Columns").Not.Nullable();
                     Map(x => x.Alias).Column("Alias").Nullable();
+                  
 
                 }
                 /* Generated SQL
