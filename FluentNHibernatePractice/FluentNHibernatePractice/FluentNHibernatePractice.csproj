@@ -66,6 +66,7 @@
     <Compile Include="Linq2Nhibernate.cs" />
     <Compile Include="NHHelper.cs" />
     <Compile Include="OneToMany.cs" />
+    <Compile Include="OneToManyToMany.cs" />
     <Compile Include="OnoToOnePractice.cs" />
     <Compile Include="FirstPractice.cs" />
     <Compile Include="Program.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FluentNHibernate.Mapping;
+using FluentNHibernatePracticeOneToManyToMany;
 
 namespace FluentNHibernatePractice
 {
@@ -14,7 +15,9 @@ namespace FluentNHibernatePractice
           //  FirstPractice.DoPractice();
            // SecondPractice.SecondPractice.DoPractice();
           //  OneToMany.Do();
-            Linq2Nhibernate.Do();
+        //    Linq2Nhibernate.Do();
+            OneToManyToMany.Do();
+            ;
         }
 
        
