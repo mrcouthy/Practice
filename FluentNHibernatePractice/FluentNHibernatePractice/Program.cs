@@ -10,9 +10,11 @@ namespace FluentNHibernatePractice
     {
         static void Main(string[] args)
         {
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize(); 
           //  FirstPractice.DoPractice();
            // SecondPractice.SecondPractice.DoPractice();
-            OneToMany.Do();
+          //  OneToMany.Do();
+            Linq2Nhibernate.Do();
         }
 
        
