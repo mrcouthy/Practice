@@ -12,26 +12,25 @@ namespace EfPractice
     using System;
     using System.Collections.Generic;
     
-    public partial class RBM_Columns
+    public partial class RBM_Tables
     {
-        public int ColumnID { get; set; }
-        public Nullable<int> TableID { get; set; }
-        public string ColumnName { get; set; }
-        public string DataType { get; set; }
-        public Nullable<int> MaxLength { get; set; }
-        public Nullable<int> Precision { get; set; }
-        public Nullable<int> Scale { get; set; }
-        public Nullable<byte> IsNullable { get; set; }
-        public string DefaultValue { get; set; }
-        public Nullable<byte> IsPrimaryKey { get; set; }
-        public string ColumnDesc { get; set; }
+        public RBM_Tables()
+        {
+            this.RBM_Columns = new HashSet<RBM_Columns>();
+        }
+    
+        public int TableID { get; set; }
+        public string TableSchema { get; set; }
+        public string TableName { get; set; }
+        public string TableDesc { get; set; }
+        public Nullable<decimal> RowIDPrefix { get; set; }
         public Nullable<byte> Flag { get; set; }
         public Nullable<System.DateTime> Date_Insert { get; set; }
         public Nullable<System.DateTime> BeginDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
-        public Nullable<int> ColumnSeq { get; set; }
-        public Nullable<int> NullifyData { get; set; }
+        public Nullable<int> DBCatalogID { get; set; }
     
-        public virtual RBM_Tables RBM_Tables { get; set; }
+        public virtual ICollection<RBM_Columns> RBM_Columns { get; set; }
+        public virtual RBM_DBCatalogs RBM_DBCatalogs { get; set; }
     }
 }

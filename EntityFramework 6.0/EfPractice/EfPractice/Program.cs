@@ -6,8 +6,21 @@ namespace EfPractice
     {
         private static void Main(string[] args)
         {
-            SaveAndGetReports_CodeFirstFromDb();
-            SaveAndGetMetaData_EfDesingFromDb();
+            //SaveAndGetReports_CodeFirstFromDb();
+            //SaveAndGetMetaData_EfDesingFromDb();
+            NewTry();
+
+        }
+
+        private static void NewTry()
+        {
+
+            var dbcatlog = DataGenerator.GetDbCatalogMetaData("");
+            using (MetaDataContext mdc = new MetaDataContext())
+            {
+                mdc.RBM_DBCatalogs.Add(dbcatlog.First<RBM_DBCatalogs>());
+                mdc.SaveChanges();
+            }
         }
 
         public static void SaveAndGetMetaData_EfDesingFromDb()

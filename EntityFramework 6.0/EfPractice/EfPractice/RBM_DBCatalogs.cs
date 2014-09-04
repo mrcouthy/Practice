@@ -14,6 +14,11 @@ namespace EfPractice
     
     public partial class RBM_DBCatalogs
     {
+        public RBM_DBCatalogs()
+        {
+            this.RBM_Tables = new HashSet<RBM_Tables>();
+        }
+    
         public int DBCatalogID { get; set; }
         public string DBCatalogName { get; set; }
         public string DBCatalogServer { get; set; }
@@ -22,5 +27,7 @@ namespace EfPractice
         public Nullable<System.DateTime> Date_Insert { get; set; }
         public Nullable<System.DateTime> BeginDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
+    
+        public virtual ICollection<RBM_Tables> RBM_Tables { get; set; }
     }
 }

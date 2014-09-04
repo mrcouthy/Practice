@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGenerator.cs" />
     <Compile Include="DBContextGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,13 +71,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MetaDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ModelFirstMetaDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFirstMetaDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelFirstMetaDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFirstMetaDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelFirstMetaDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFirstMetaDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBM_Columns.cs">
-      <DependentUpon>MetaDataModel.tt</DependentUpon>
+      <DependentUpon>ModelFirstMetaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RBM_DBCatalogs.cs">
-      <DependentUpon>MetaDataModel.tt</DependentUpon>
+      <DependentUpon>ModelFirstMetaDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RBM_Tables.cs">
+      <DependentUpon>ModelFirstMetaDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RB_Report.cs" />
     <Compile Include="ReporModel.cs" />
@@ -104,6 +123,23 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MetaDataModel.edmx</DependentUpon>
       <LastGenOutput>MetaDataModel.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="ModelFirstMetaDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelFirstMetaDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelFirstMetaDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFirstMetaDataModel.edmx</DependentUpon>
+      <LastGenOutput>ModelFirstMetaDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ModelFirstMetaDataModel.edmx.diagram">
+      <DependentUpon>ModelFirstMetaDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="ModelFirstMetaDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFirstMetaDataModel.edmx</DependentUpon>
+      <LastGenOutput>ModelFirstMetaDataModel.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
