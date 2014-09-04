@@ -1,0 +1,9 @@
+﻿SessionFactory gives a session. 
+session is a unit of work.
+connection is there(oppened) only when session is flushed.
+
+queries
+	1.HQL
+	2.ICriteria
+	3.Query by Example
+	4.Raw SQL

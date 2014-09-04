@@ -29,10 +29,10 @@ namespace FluentNHibernatePractice
         {
             _sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008
-                  .ConnectionString(c => c.Server("jdedev")
-                                        .Database("NhibernatePractice")
-                                        .Username("dbadmb")
-                                        .Password(""))
+                  .ConnectionString(c => c.Server("USER-PC")
+                                        .Database("pasat")
+                                        .Username("sa")
+                                        .Password("123"))
                 // @"Server=jdedev;initial catalog=mynewtest;
                 //user=dbadmb;") // Modify your ConnectionString
                               .ShowSql()
