@@ -50,13 +50,61 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBContextGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContextGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MetaDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MetaDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MetaDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RBM_Columns.cs">
+      <DependentUpon>MetaDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RBM_DBCatalogs.cs">
+      <DependentUpon>MetaDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="RB_Report.cs" />
     <Compile Include="ReporModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="MetaDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MetaDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DBContextGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBContextGenerator.cs</LastGenOutput>
+      <DependentUpon>MetaDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="MetaDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MetaDataModel.edmx</DependentUpon>
+      <LastGenOutput>MetaDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="MetaDataModel.edmx.diagram">
+      <DependentUpon>MetaDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="MetaDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MetaDataModel.edmx</DependentUpon>
+      <LastGenOutput>MetaDataModel.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

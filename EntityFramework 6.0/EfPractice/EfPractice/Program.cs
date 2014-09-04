@@ -10,23 +10,30 @@ namespace EfPractice
     {
         static void Main(string[] args)
         {
-                      SaveAndGetReports();
-         //   SaveAndGetMetaData();
+            //       SaveAndGetReports();
+            SaveAndGetMetaData();
         }
 
         public static void SaveAndGetMetaData()
         {
-            //var rb = new RBM_Columns { ColumnName = "CN" };
-            //using (var db = new ReporModel())
-            //{
-            //    db.RBM_Columns.Add(rb);
-            //    db.SaveChanges();
-            //}
+            var rb = new RBM_Columns { ColumnName = "CN" };
+            var dbCat = new RBM_DBCatalogs { DBCatalogName = "Db" };
 
-            //using (var db = new MetaDataModel())
-            //{
-            //    var rpts = db.RBM_Columns.ToList();
-            //}
+            using (var db = new Dhiraj_JDEPortalEntities2())
+            {
+                db.RBM_Columns.Add(rb);
+                db.SaveChanges();
+
+                db.RBM_DBCatalogs.Add(dbCat);
+                db.SaveChanges();
+            }
+
+            using (var db = new Dhiraj_JDEPortalEntities2())
+            {
+                var cols = db.RBM_Columns.ToList();
+                var dbs = db.RBM_DBCatalogs.ToList();
+
+            }
         }
 
         public static void SaveAndGetReports()

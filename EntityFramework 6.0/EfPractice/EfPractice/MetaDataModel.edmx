@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Dhiraj_JDEPortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="RBM_Columns">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableID" Type="int" />
+          <Property Name="ColumnName" Type="varchar" MaxLength="150" />
+          <Property Name="DataType" Type="varchar" MaxLength="50" />
+          <Property Name="MaxLength" Type="int" />
+          <Property Name="Precision" Type="int" />
+          <Property Name="Scale" Type="int" />
+          <Property Name="IsNullable" Type="tinyint" />
+          <Property Name="DefaultValue" Type="varchar" MaxLength="50" />
+          <Property Name="IsPrimaryKey" Type="tinyint" />
+          <Property Name="ColumnDesc" Type="varchar" MaxLength="250" />
+          <Property Name="Flag" Type="tinyint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="BeginDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="ColumnSeq" Type="int" />
+          <Property Name="NullifyData" Type="int" />
+        </EntityType>
+        <EntityType Name="RBM_DBCatalogs">
+          <Key>
+            <PropertyRef Name="DBCatalogID" />
+          </Key>
+          <Property Name="DBCatalogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DBCatalogName" Type="varchar" MaxLength="50" />
+          <Property Name="DBCatalogServer" Type="varchar" MaxLength="50" />
+          <Property Name="DBCatalogTypeID" Type="int" />
+          <Property Name="ProductVersionID" Type="int" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="BeginDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="Dhiraj_JDEPortalModelStoreContainer">
+          <EntitySet Name="RBM_Columns" EntityType="Self.RBM_Columns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RBM_DBCatalogs" EntityType="Self.RBM_DBCatalogs" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Dhiraj_JDEPortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="RBM_Columns">
+          <Key>
+            <PropertyRef Name="ColumnID" />
+          </Key>
+          <Property Name="ColumnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="Int32" />
+          <Property Name="ColumnName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DataType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaxLength" Type="Int32" />
+          <Property Name="Precision" Type="Int32" />
+          <Property Name="Scale" Type="Int32" />
+          <Property Name="IsNullable" Type="Byte" />
+          <Property Name="DefaultValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsPrimaryKey" Type="Byte" />
+          <Property Name="ColumnDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Flag" Type="Byte" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="BeginDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="ColumnSeq" Type="Int32" />
+          <Property Name="NullifyData" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RBM_DBCatalogs">
+          <Key>
+            <PropertyRef Name="DBCatalogID" />
+          </Key>
+          <Property Name="DBCatalogID" Type="Int32" Nullable="false" />
+          <Property Name="DBCatalogName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DBCatalogServer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DBCatalogTypeID" Type="Int32" />
+          <Property Name="ProductVersionID" Type="Int32" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="BeginDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Dhiraj_JDEPortalEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RBM_Columns" EntityType="Self.RBM_Columns" />
+          <EntitySet Name="RBM_DBCatalogs" EntityType="Self.RBM_DBCatalogs" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Dhiraj_JDEPortalModelStoreContainer" CdmEntityContainer="Dhiraj_JDEPortalEntities2">
+          <EntitySetMapping Name="RBM_Columns">
+            <EntityTypeMapping TypeName="Dhiraj_JDEPortalModel.RBM_Columns">
+              <MappingFragment StoreEntitySet="RBM_Columns">
+                <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+                <ScalarProperty Name="Precision" ColumnName="Precision" />
+                <ScalarProperty Name="Scale" ColumnName="Scale" />
+                <ScalarProperty Name="IsNullable" ColumnName="IsNullable" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="IsPrimaryKey" ColumnName="IsPrimaryKey" />
+                <ScalarProperty Name="ColumnDesc" ColumnName="ColumnDesc" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ColumnSeq" ColumnName="ColumnSeq" />
+                <ScalarProperty Name="NullifyData" ColumnName="NullifyData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RBM_DBCatalogs">
+            <EntityTypeMapping TypeName="Dhiraj_JDEPortalModel.RBM_DBCatalogs">
+              <MappingFragment StoreEntitySet="RBM_DBCatalogs">
+                <ScalarProperty Name="DBCatalogID" ColumnName="DBCatalogID" />
+                <ScalarProperty Name="DBCatalogName" ColumnName="DBCatalogName" />
+                <ScalarProperty Name="DBCatalogServer" ColumnName="DBCatalogServer" />
+                <ScalarProperty Name="DBCatalogTypeID" ColumnName="DBCatalogTypeID" />
+                <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
