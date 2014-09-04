@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace EfPractice
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            //       SaveAndGetReports();
-            SaveAndGetMetaData();
+            SaveAndGetReports_CodeFirstFromDb();
+            SaveAndGetMetaData_EfDesingFromDb();
         }
 
-        public static void SaveAndGetMetaData()
+        public static void SaveAndGetMetaData_EfDesingFromDb()
         {
             var rb = new RBM_Columns { ColumnName = "CN" };
             var dbCat = new RBM_DBCatalogs { DBCatalogName = "Db" };
@@ -32,11 +28,10 @@ namespace EfPractice
             {
                 var cols = db.RBM_Columns.ToList();
                 var dbs = db.RBM_DBCatalogs.ToList();
-
             }
         }
 
-        public static void SaveAndGetReports()
+        public static void SaveAndGetReports_CodeFirstFromDb()
         {
             var rb = new RB_Report { Name = "a", CreatedById = 1 };
             using (var db = new ReporModel())
@@ -49,7 +44,6 @@ namespace EfPractice
             {
                 var rpts = db.RB_Report.ToList();
             }
-
         }
     }
 }
