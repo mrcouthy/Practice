@@ -12,22 +12,14 @@ namespace MoqPractice
         static void Main(string[] args)
         {
             var mock = new Mock<IFoo>();
-            mock.Setup(foo => foo.DoSomething("ping")).Returns(true);
+            //Set up is important , here we are telling moq that if parameter of dosometing is ping then return true else return false(default value)
+            mock.Setup(foo => foo.DoSomething("ping")).Returns(6);
             IFoo  f = mock.Object;
-            bool b = f.DoSomething("");
-            bool c = f.DoSomething("ping");
-        }
-
-
-       
-    }
-
-    class Foo : IFoo
-    {
-        public bool DoSomething(string p)
-        {
-            return true;
+            int b = f.DoSomething("");
+            int c = f.DoSomething("ping");
         }
     }
+
+    
 
 }

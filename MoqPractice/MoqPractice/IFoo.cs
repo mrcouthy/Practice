@@ -7,7 +7,7 @@ namespace MoqPractice
 {
    public interface IFoo
     {
-         bool DoSomething(string p);
+         int DoSomething(string p);
         
     }
 }

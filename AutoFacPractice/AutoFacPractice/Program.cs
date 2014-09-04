@@ -23,7 +23,7 @@ namespace AutoFacPractice
             //builder.RegisterType<TodayWriter>().As<IDateWriter>();
             // builder.RegisterType<ConsoleOutput>().As<IOutput>();
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces();
-            builder.Register(c => new ConfigReader("b")).As<IConfigReader>();
+           // builder.Register(c => new ConfigReader("b")).As<IConfigReader>();
             Container = builder.Build();
 
             // The WriteDate method is where we'll make use
@@ -40,8 +40,8 @@ namespace AutoFacPractice
             {
                 var writer = scope.Resolve<IDateWriter>();
                 writer.WriteDate();
-               // var configReader = Container.Resolve<IConfigReader>(new NamedParameter("connfigSectionName", "b"));
-                var configReader = Container.Resolve<IConfigReader>();
+                var configReader = Container.Resolve<IConfigReader>(new NamedParameter("connfigSectionName", "b"));
+               
                 configReader.ConfigString();
             }
         }
