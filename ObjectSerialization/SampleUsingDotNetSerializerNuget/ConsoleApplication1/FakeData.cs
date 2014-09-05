@@ -10,14 +10,17 @@ namespace JDE.Common.Tests
     [Serializable]
     public class ReportModel
     {
-        public string Name { get; set; }
+        public string abc { get; set; }
+         public string Name { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
         public List<UserDataSetModel> MyDataSets { get; set; }
     }
 
     public class UserTable
     {
         public string Name { get; set; }
-        public IEnumerable<ColumnDefinition> Columns { get; set; }
+        public List<ColumnDefinition> Columns { get; set; }
     }
 
     public class ColumnDefinition
@@ -29,13 +32,14 @@ namespace JDE.Common.Tests
     {
         public string Name { get; set; }
         public string Server { get; set; }
-        public IEnumerable<UserTable> Tables { get; set; }
+        public List<UserTable> Tables { get; set; }
     }
 
     public class DataGenerator
     {
         public static ReportModel GetUserDataSets()
         {
+            
             var policy = new UserDataSetModel
             {
                 Name = "Policy",
@@ -132,6 +136,8 @@ namespace JDE.Common.Tests
             var datasets = new List<UserDataSetModel> { policy, claims, expenses };
             ReportModel reportModel = new ReportModel();
             reportModel.MyDataSets = datasets;
+            reportModel.abc = "ramramr";
+           // reportModel.Phone = "a56s4df";
             return reportModel;
         }
     }

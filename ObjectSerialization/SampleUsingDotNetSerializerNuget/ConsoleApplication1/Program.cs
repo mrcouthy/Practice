@@ -10,7 +10,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Test.meth();
+            //Test.meth();
+            Test.methDotNet();
         }
     }
 }
