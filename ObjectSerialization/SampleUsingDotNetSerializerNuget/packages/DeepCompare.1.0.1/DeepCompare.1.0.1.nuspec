@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>DeepCompare</id>
+    <version>1.0.1</version>
+    <title>DeepCompare</title>
+    <authors>Michael Baarz</authors>
+    <owners>Michael Baarz</owners>
+    <projectUrl>http://deepcompare.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>DeepCompare is a small library for comparing object and their nested properties with no limitation for the type of the class (you can use normal typed objects, untyped object and dynamics) and the level of the properties and fields which will iterated down. It makes no differences between fields and properties and tries to compare the values of them.</description>
+    <releaseNotes>PreAlpha Version with fixed Enum compare</releaseNotes>
+    <copyright>Michael Baarz</copyright>
+    <language>en-GB</language>
+    <tags>compare</tags>
+    <dependencies>
+      <dependency id="fasterflect" version="2.1.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.0" />
+      <frameworkAssembly assemblyName="Mscorlib" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

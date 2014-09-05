@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XSerializer</name>
+    </assembly>
+    <members>
+        <member name="M:XSerializer.RedactAttribute.Redact(System.String,System.Boolean)">
+            <summary>
+            Redacts the clear-text.
+            </summary>
+            <param name="clearText">Some clear-text.</param>
+            <param name="redactEnabled">Whether redaction is currently enabled.</param>
+            <returns>The redacted text.</returns>
+        </member>
+        <member name="M:XSerializer.RedactAttribute.Redact(System.Nullable{System.Boolean},System.Boolean)">
+            <summary>
+            Redacts the string representation of <paramref name="booleanValue"/>.
+            </summary>
+            <param name="booleanValue">A <see cref="T:System.Boolean"/>.</param>
+            <param name="redactEnabled">Whether redaction is currently enabled.</param>
+            <returns>The redacted text.</returns>
+        </member>
+        <member name="M:XSerializer.RedactAttribute.Redact(System.Nullable{System.DateTime},System.Boolean)">
+            <summary>
+            Redacts the string representation of <paramref name="dateTimeValue"/>.
+            </summary>
+            <param name="dateTimeValue">A <see cref="T:System.DateTime"/>.</param>
+            <param name="redactEnabled">Whether redaction is currently enabled.</param>
+            <returns>The redacted text.</returns>
+        </member>
+        <member name="M:XSerializer.RedactAttribute.Redact(System.Object,System.Boolean)">
+            <summary>
+            Redacts the string representation of <paramref name="value"/>.
+            </summary>
+            <param name="value">An object.</param>
+            <param name="redactEnabled">Whether redaction is currently enabled.</param>
+            <returns>The redacted text.</returns>
+        </member>
+    </members>
+</doc>
