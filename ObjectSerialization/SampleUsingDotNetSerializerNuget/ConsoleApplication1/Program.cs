@@ -1,4 +1,5 @@
 ﻿using JDE.Common.Tests;
+using KellermanSoftware.CompareNetObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,15 @@ namespace ConsoleApplication1
             
             string json = JsonSerialization<ReportModel>.GetString(v);
             ReportModel rm = JsonSerialization<ReportModel>.GetObject(json);
+
+            string j = JsonDotNetSerialize<ReportModel>.GetString(v);
+            ReportModel r = JsonDotNetSerialize<ReportModel>.GetObject(j);
+
+            CompareLogic compareLogic = new CompareLogic();
+            ComparisonResult result = compareLogic.Compare(v, r);
+            //  result.Differences 
+            bool c = result.AreEqual ;
+
 
         }
     }

@@ -14,13 +14,13 @@ namespace JDE.Common.Tests
          public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public List<UserDataSetModel> MyDataSets { get; set; }
+        public IEnumerable<UserDataSetModel> MyDataSets { get; set; }
     }
 
     public class UserTable
     {
         public string Name { get; set; }
-        public List<ColumnDefinition> Columns { get; set; }
+        public IEnumerable<ColumnDefinition> Columns { get; set; }
     }
 
     public class ColumnDefinition
@@ -32,7 +32,7 @@ namespace JDE.Common.Tests
     {
         public string Name { get; set; }
         public string Server { get; set; }
-        public List<UserTable> Tables { get; set; }
+        public IEnumerable<UserTable> Tables { get; set; }
     }
 
     public class DataGenerator
