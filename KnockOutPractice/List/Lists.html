@@ -31,7 +31,9 @@
     <h3 data-bind="visible: Total() > 0">
         Total surcharge: $<span data-bind="text: Total().toFixed(2)"></span>
     </h3>
-    <button data-bind="click: addSeats" >Add more seat</button>
+    <h4>No of Seats: <span data-bind="text: seats().length"></span></h4>
+
+    <button data-bind="click: addSeats,enable: seats().length<5" >Add more seat</button>
     <script type="text/javascript" src="knoLists.js"></script>
 </body>
 
