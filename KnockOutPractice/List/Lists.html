@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <script type="text/javascript" src="knockout-3.1.js"></script>
+    <script type="text/javascript" src="jquery-2.1.1.js"></script>
+    
+    <h2>Your seat reservations</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Passenger name</th>
+                <th>Meal</th>
+                <th>Surcharge</th>
+                <th></th>
+            </tr>
+        </thead>
+        <!-- Todo: Generate table body -->
+        <tbody data-bind="foreach: seats">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: meal().mealName"></td>
+                <td data-bind="text: meal().price"></td>
+            </tr> 
+        </tbody>
+    </table>
+    <script type="text/javascript" src="knoLists.js"></script>
+</body>
+
+</html>

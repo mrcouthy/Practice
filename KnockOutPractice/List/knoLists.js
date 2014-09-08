@@ -1,3 +1,4 @@
+$(document).ready(function(){
 // Class to represent a row in the seat reservations grid
 function SeatReservation(name, initialMeal) {
     var self = this;
@@ -24,3 +25,4 @@ function ReservationsViewModel() {
 }
 
 ko.applyBindings(new ReservationsViewModel());
+});
