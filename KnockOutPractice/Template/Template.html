@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <script type="text/javascript" src="../knockout-3.1.js"></script>
+    <script type="text/javascript" src="../jquery-2.1.1.js"></script>
+<h2>Participants</h2>
+Here are the participants:
+<div data-bind="template: { name: 'person-template', data: buyer }"></div>
+<div data-bind="template: { name: 'person-template', data: seller }"></div>
+ 
+<script type="text/html" id="person-template">
+    <h3 data-bind="text: name"></h3>
+    <p>Credits: <span data-bind="text: credits"></span></p>
+</script>
+ 
+<script type="text/javascript">
+     function MyViewModel() {
+         this.buyer = { name: 'Franklin', credits: 250 };
+         this.seller = { name: 'Mario', credits: 5800 };
+     }
+     ko.applyBindings(new MyViewModel());
+</script>
+ 
+    <script type="text/javascript" src="koGrid.js"></script>
+</body>
+
+</html>
