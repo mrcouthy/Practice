@@ -6,14 +6,16 @@
     <script type="text/javascript" src="../knockout-3.1.js"></script>
     <script type="text/javascript" src="../jquery-2.1.1.js"></script>
 <h2>Participants</h2>
-Here are the participants:
+<h1>Here are the participants:</h1>
+    
 <div data-bind="template: { name: 'person-template', data: buyer }"></div>
 <div data-bind="template: { name: 'person-template', data: seller }"></div>
  
+    <!--tempalte start--> 
 <script type="text/html" id="person-template">
-    <h3 data-bind="text: name"></h3>
-    <p>Credits: <span data-bind="text: credits"></span></p>
+    <span data-bind="text: name"> </span>   Credits: <span data-bind="text: credits"></span><hr /> 
 </script>
+    <!--template end-->
  
 <script type="text/javascript">
      function MyViewModel() {
@@ -22,8 +24,6 @@ Here are the participants:
      }
      ko.applyBindings(new MyViewModel());
 </script>
- 
-    <script type="text/javascript" src="koGrid.js"></script>
 </body>
 
 </html>
