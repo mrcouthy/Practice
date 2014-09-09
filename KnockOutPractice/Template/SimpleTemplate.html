@@ -8,9 +8,7 @@
 <h2>Participants</h2>
 <h1>Here are the participants:</h1>
     
-<div data-bind="template: { name: 'person-template', data: buyer }"></div>
-Above and below are template rendered
-<div data-bind="template: { name: 'person-template', data: seller }"></div>
+<div data-bind="template: { name: 'person-template', foreach: people }"></div>
  
     <!--tempalte start--> 
 <script type="text/html" id="person-template">
@@ -20,8 +18,10 @@ Above and below are template rendered
  
 <script type="text/javascript">
     function MyViewModel() {
-        this.buyer = { name: 'Franklin', credits: 250 };
-        this.seller = { name: 'Mario', credits: 5800 };
+        this.people = [
+         { name: 'Franklin', credits: 250 },
+         { name: 'Mario', credits: 5800 }
+         ]
     }
     ko.applyBindings(new MyViewModel());
 </script>
