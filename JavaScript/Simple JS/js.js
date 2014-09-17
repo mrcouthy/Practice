@@ -5,6 +5,13 @@ window.onload = function () {
     //Mulitline text
     console.log('test\
  log');
-    alert(obj.name);
+    console.log(typeof "Str");
+    console.log(typeof 123);
+    console.log(typeof false);
+    console.log(typeof [1, 2, 3]);
+    console.log(typeof obj);
+    console.log(typeof {});
+    console.log(typeof {name:"ram"});
+
 }
 
