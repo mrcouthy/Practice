@@ -25,7 +25,37 @@ window.onload = function () {
     console.log(testIt());
     console.log(automaticGlobal);
    
- 
+
+    console.log("ABCDEF".slice(1, 3));
+    console.log("ABCDEF".slice(-4, -1));
+
+    console.log('Arrays');
+    console.log("_______________");
+    var hello = ["a", "b", "c", "d"];
+    console.log(hello.pop());
+    console.log(hello);
+    console.log(hello.push("1"));
+    console.log(hello);
+    hello = ["a", "b", "c", "d"];
+    console.log(hello.shift());
+    console.log(hello);
+    console.log(hello.unshift("1"));
+    console.log(hello);
+    console.log(delete hello[0]);
+    console.log(hello);
+
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    console.log(fruits);
+    fruits.splice(1, 2);//from ,count
+    console.log(fruits);
+
+    //sorting
+    var points = [40, 100, 1, 5, 25, 10];
+    points.sort(function (a, b) { return a - b });
+
+    //regex
+    var str = "Visit W3Schools";
+    var n = str.search(/w3schools/i);
 }
 
 function testIt()
