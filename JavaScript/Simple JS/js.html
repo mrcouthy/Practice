@@ -6,7 +6,26 @@
     <button onclick ="this.innerHTML=Date()">a</button>
     <script type="text/javascript" src="js.js"></script>
 
-    Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+    <b>Hoisting</b> is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
 
+    <br />
+    <b>"use strict";</b>  Defines that JavaScript code should be executed in "strict mode".
+
+   <p><b> Use Parameter Defaults</b>
+
+If a function is called with a missing argument, the value of the missing argument is set to undefined.
+
+Undefined values can break your code. It is a good habit to assign default values to arguments.
+Example
+function myFunction(x, y) {
+    if (y === undefined) {
+        y = 0;
+    }
+}
+
+Or, even simpler:
+function myFunction(x, y) {
+    y = y || 0;//if y is undifined use 0
+} </p>
 </body>
 </html>

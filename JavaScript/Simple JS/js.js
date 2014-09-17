@@ -1,4 +1,5 @@
 //Java script objects
+//"use strict";  
 var obj = { name: "John", Age: 12 };
 
 window.onload = function () {
@@ -56,6 +57,9 @@ window.onload = function () {
     //regex
     var str = "Visit W3Schools";
     var n = str.search(/w3schools/i);
+    var y;
+    console.log(y );
+    console.log(y || 0);//if y is undefined use 0
 }
 
 function testIt()
