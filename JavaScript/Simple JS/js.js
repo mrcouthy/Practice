@@ -11,7 +11,27 @@ window.onload = function () {
     console.log(typeof [1, 2, 3]);
     console.log(typeof obj);
     console.log(typeof {});
-    console.log(typeof {name:"ram"});
+    console.log(typeof { name: "ram" });
+    //access
+    console.log('Accessing');
+    console.log("_______________");
 
+    console.log(obj.name);//same as
+    console.log(obj["name"]);
+
+    //Functions
+    console.log('Functions');
+    console.log("_______________");
+    console.log(testIt());
+    console.log(automaticGlobal);
+   
+ 
+}
+
+function testIt()
+{
+    automaticGlobal = "Automatic global if not declared";
+    var thisIsPrivate = "Private";
+    return "Name";
 }
 
