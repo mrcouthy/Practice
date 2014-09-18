@@ -3,9 +3,16 @@
 <head>
 </head>
 <body>
-    <script type="text/javascript" src="../../knockout-3.1.js"></script>
+    <script type="text/javascript" src="../../knockout-3.2.0.debug.js"></script>
     <script type="text/javascript" src="../../jquery-2.1.1.js"></script>
     <script type="text/javascript" src="customBinding.js"></script>
+    <div>
+        <pre>
+            The model is giftWrap of type boolean
+            The custom binding is slideVisible
+            which is again bound to checkbox 
+        </pre>
+    </div>
     <div data-bind="slideVisible: giftWrap, slideDuration: 600">You have selected the option</div>
     <label>
         <input type="checkbox" data-bind="checked: giftWrap" />
