@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <script type="text/javascript" src="../../knockout-3.1.js"></script>
+    <script type="text/javascript" src="../../jquery-2.1.1.js"></script>
+
+    <div data-bind="template: { name: 'my-template', data: Names }"></div>
+    <div data-bind="template: { name: 'my-template', data: Addresses }"></div>
+    <div data-bind="template: { name: 'my-template', data: PhoneNo }"></div>
+
+    <!--tempalte start-->
+    <script type="text/html" id="my-template">
+        <b>
+            <span data-bind="text: name"></span>
+        </b>
+    </script>
+    <!--template end-->
+
+    <script>
+        function Model() {
+            this.Names = { name: "New Name is Ram" };
+            this.Addresses = { name: "New Name is Kathmandu" };
+            this.PhoneNo = { name: "556556568" };
+        }
+        ko.applyBindings(new Model());
+    </script>
+</body>
+</html>
