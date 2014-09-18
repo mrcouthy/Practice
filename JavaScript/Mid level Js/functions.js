@@ -1,10 +1,32 @@
 window.onload = function () {
-   // defineFunction();
-    //console.log(defineFunction.toString());//prints the function
-    argumentObjectSample();
-   
+   defineFunction();
+   console.log(defineFunction.toString());//prints the function
+   argumentObjectSample();//since its global it belongs to window
+   console.log( this.myObject.fullName());
+    //calling functions
+   window.callingFunction("window");
+   this.callingFunction("this");
+   var myObj;
+   var myArray=["Apply"];
+   callingFunction.call(myObj, "Function Method");
+   callingFunction.apply(myObj, myArray);//takes parameter as array
+   console.log(myObj);
 
 }
+
+function callingFunction(name)
+{
+    console.log(name + " functionwas called");
+}
+
+var myObject = {
+    firstName: "John",
+    lastName: "Doe",
+    fullName: function () {
+        return this.firstName + " " + this.lastName;
+    }
+}
+ 
 
 function argumentObjectSample()
 {
@@ -18,7 +40,7 @@ function argumentObjectSample()
         }
         return sum;
     }
-    console.log(x);
+    console.log("Sum is " + x);
 }
 
 function defineFunction()
