@@ -11,7 +11,7 @@ namespace Logging
 {
     class Program
     {
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger("test");
         static void Main(string[] args)
         {
             XmlConfigurator.Configure(); //only once
