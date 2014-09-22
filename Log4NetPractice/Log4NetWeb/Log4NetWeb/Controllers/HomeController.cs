@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Log4NetWeb.Systematic;
 
 namespace Log4NetWeb.Controllers
 {
@@ -19,7 +20,8 @@ namespace Log4NetWeb.Controllers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex);
+                Log4NetLogger l = new Log4NetLogger() ;
+                l.Error(ex);
             }
             
         }

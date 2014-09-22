@@ -117,6 +117,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
+    <Compile Include="Logger\ILogger.cs" />
+    <Compile Include="Logger\Log4NetLogger.cs" />
+    <Compile Include="Logger\LogUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
