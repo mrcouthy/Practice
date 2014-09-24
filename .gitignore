@@ -25,3 +25,9 @@
 /Log4NetPractice/Logging/Logging/obj
 /Log4NetPractice/Logging/packages
 /Log4NetPractice/Logging/*.suo
+/APO/APO/obj
+/APO/APO/bin
+/APO/packages
+/Libraries/DataTableToHtml/obj
+/Libraries/DataTableToHtml/bin
+/APO/*.suo
