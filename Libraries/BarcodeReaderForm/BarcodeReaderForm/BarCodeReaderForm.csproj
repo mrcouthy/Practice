@@ -44,23 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarcodeReaderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BarcodeReaderForm.Designer.cs">
-      <DependentUpon>BarcodeReaderForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="BarcodeReaderFormSample.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BarcodeReaderFormSample.Designer.cs">
       <DependentUpon>BarcodeReaderFormSample.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImplementBarCode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BarcodeReaderForm.resx">
-      <DependentUpon>BarcodeReaderForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BarcodeReaderFormSample.resx">
       <DependentUpon>BarcodeReaderFormSample.cs</DependentUpon>
     </EmbeddedResource>

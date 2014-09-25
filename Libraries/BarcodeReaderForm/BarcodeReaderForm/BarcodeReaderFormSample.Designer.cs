@@ -56,7 +56,7 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // ImplementBarcodeReader
+            // BarcodeReaderFormSample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -64,8 +64,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Name = "ImplementBarcodeReader";
+            this.Name = "BarcodeReaderFormSample";
             this.Text = "ImplementBarcodeReader";
+            this.Load += new System.EventHandler(this.BarcodeReaderFormSample_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
