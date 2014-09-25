@@ -5,3 +5,10 @@
 /FluentNHibernatePractice/packages
 /AutoFacPractice/*.suo
 /FluentNHibernatePractice/*.suo
+/Log4NetPractice/Log4NetWeb/Log4NetWeb/obj
+/Log4NetPractice/Log4NetWeb/Log4NetWeb/bin
+/Log4NetPractice/Log4NetWeb/packages
+/Log4NetPractice/Log4NetWebDI/packages
+/Log4NetPractice/Log4NetWebDI/Log4NetWeb/Log4NetWeb.csproj.user
+/Log4NetPractice/Log4NetWebDI/Log4NetWeb/bin
+/Log4NetPractice/Log4NetWebDI/Log4NetWeb/obj
