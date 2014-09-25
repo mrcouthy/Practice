@@ -31,3 +31,10 @@
 /Libraries/DataTableToHtml/obj
 /Libraries/DataTableToHtml/bin
 /APO/*.suo
+/FluentNHibernatePractice/packages
+/FluentNHibernatePractice/*.suo
+/Log4NetPractice/Log4NetWeb/*.suo
+/Log4NetPractice/Log4NetWeb/Log4NetWeb/*.user
+/Log4NetPractice/Log4NetWeb/Log4NetWeb/bin
+/Log4NetPractice/Log4NetWeb/Log4NetWeb/obj
+/Log4NetPractice/Log4NetWeb/packages
