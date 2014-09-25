@@ -1,14 +1,33 @@
 /FluentNHibernatePractice/FluentNHibernatePractice/bin
 /FluentNHibernatePractice/FluentNHibernatePractice/obj
+/JQPractice/*.suo
+/MoqPractice/packages
+/MoqPractice/MoqPractice/bin
+/MoqPractice/MoqPractice/obj
+/MoqPractice/*.suo
+/AutoFacPractice/packages
 /AutoFacPractice/AutoFacPractice/bin
 /AutoFacPractice/AutoFacPractice/obj
-/FluentNHibernatePractice/packages
+
 /AutoFacPractice/*.suo
-/FluentNHibernatePractice/*.suo
-/Log4NetPractice/Log4NetWeb/Log4NetWeb/obj
-/Log4NetPractice/Log4NetWeb/Log4NetWeb/bin
-/Log4NetPractice/Log4NetWeb/packages
-/Log4NetPractice/Log4NetWebDI/packages
-/Log4NetPractice/Log4NetWebDI/Log4NetWeb/Log4NetWeb.csproj.user
-/Log4NetPractice/Log4NetWebDI/Log4NetWeb/bin
-/Log4NetPractice/Log4NetWebDI/Log4NetWeb/obj
+/EntityFramework 6.0/EfPractice/EfPractice/bin
+/EntityFramework 6.0/EfPractice/EfPractice/obj
+/EntityFramework 6.0/EfPractice/packages
+/ObjectSerialization/SampleUsingDotNetSerializerNuget/ConsoleApplication1/bin
+/ObjectSerialization/SampleUsingDotNetSerializerNuget/ConsoleApplication1/obj
+/ObjectSerialization/SampleUsingDotNetSerializerNuget/packages
+/ObjectSerialization/SampleUsingDotNetSerializerNuget/ConsoleApplication1Tests/bin
+/ObjectSerialization/SampleUsingDotNetSerializerNuget/ConsoleApplication1Tests/obj
+/BootStrap/ToolTip/packages
+/BootStrap/ToolTip/ToolTip/bin
+/BootStrap/ToolTip/ToolTip/obj
+/Log4NetPractice/Logging/Logging/bin
+/Log4NetPractice/Logging/Logging/obj
+/Log4NetPractice/Logging/packages
+/Log4NetPractice/Logging/*.suo
+/APO/APO/obj
+/APO/APO/bin
+/APO/packages
+/Libraries/DataTableToHtml/obj
+/Libraries/DataTableToHtml/bin
+/APO/*.suo
