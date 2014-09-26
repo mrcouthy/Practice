@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,19 +16,32 @@ namespace BarcodeReader
         public BarcodeReaderFormSample()
         {
             InitializeComponent();
-
         }
 
         private void BarcodeReaderFormSample_Load(object sender, EventArgs e)
         {
             ImplementBarCode bc = new ImplementBarCode(this);
-            bc.BarcodeReadEvent += bc_BarcodeReadEvent;
+            bc.ControlToNotAllowBarCodeTextInput = textBox1;
+            //bc.BarcodeReadEvent += bc_BarcodeReadEvent;
+            //bc.BarCodeReadStartedEvent += bc_BarCodeReadStartedEvent;
         }
 
-        void bc_BarcodeReadEvent(string message)
-        {
-            
-            MessageBox.Show(message); MessageBox.Show(message); 
-        }
+     
+        //private void bc_BarCodeReadStartedEvent()
+        //{
+        //    dontWriteToTb = true;
+        //    Debug.Write("Started");
+        //}
+
+        //void bc_BarcodeReadEvent(string message)
+        //{
+        //    dontWriteToTb = false;
+        //    Debug.Write(message);
+        //    Debug.Write("Ended");
+        //    //  MessageBox.Show(message); MessageBox.Show(message); 
+        //}
+
+     
+    
     }
 }
