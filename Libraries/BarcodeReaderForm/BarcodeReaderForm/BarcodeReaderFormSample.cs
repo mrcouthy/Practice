@@ -21,7 +21,8 @@ namespace BarcodeReader
         private void BarcodeReaderFormSample_Load(object sender, EventArgs e)
         {
             ImplementBarCode bc = new ImplementBarCode(this);
-            bc.ControlToNotAllowBarCodeTextInput = textBox1;
+            bc.AddSafeControls( textBox1);
+            bc.AddSafeControls(textBox2);
             //bc.BarcodeReadEvent += bc_BarcodeReadEvent;
             //bc.BarCodeReadStartedEvent += bc_BarCodeReadStartedEvent;
         }

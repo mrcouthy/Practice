@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 using RawInput_dll;
@@ -9,15 +10,12 @@ namespace BarcodeReader
     {
         public delegate void BarCodeReadHandler(string barcode);
 
-        private Control _ControlToNotAllowBarCodeTextInput;
-        public Control ControlToNotAllowBarCodeTextInput
+
+        public void AddSafeControls(Control control)
         {
-            set
-            {
-                _ControlToNotAllowBarCodeTextInput = value;
-                _ControlToNotAllowBarCodeTextInput.KeyPress += textBox1_KeyPress;
-            }
+            control.KeyPress += textBox1_KeyPress;
         }
+
         private bool dontWriteToTb = false;
         void bc_BarcodeReadEvent(string message)
         {
