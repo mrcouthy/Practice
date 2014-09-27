@@ -23,8 +23,41 @@ namespace BarcodeReader
             ImplementBarCode bc = new ImplementBarCode(this);
             bc.AddSafeControls( textBox1);
             bc.AddSafeControls(textBox2);
+
+            
             //bc.BarcodeReadEvent += bc_BarcodeReadEvent;
             //bc.BarCodeReadStartedEvent += bc_BarCodeReadStartedEvent;
+        }
+
+        private void button1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("a");
+        }
+
+        private void button1_KeyUp(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void button1_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
         }
 
      

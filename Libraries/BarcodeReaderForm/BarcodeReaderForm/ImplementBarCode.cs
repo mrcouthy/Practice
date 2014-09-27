@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -73,12 +74,15 @@ namespace BarcodeReader
                         BarCodeStarted = true;
                         BarCodeReadStartedEvent();
                     }
-                    _barcode = _barcode + (char)e.KeyPressEvent.VKey;
                     if (e.KeyPressEvent.VKeyName == "ENTER")
                     {
                         BarCodeStarted = false;
-                        BarcodeReadEvent(_barcode.Trim());
+                        BarcodeReadEvent(_barcode);
                         _barcode = string.Empty;
+                    }
+                    else
+                    {
+                        _barcode = _barcode + (char)e.KeyPressEvent.VKey;
                     }
                 }
             }
