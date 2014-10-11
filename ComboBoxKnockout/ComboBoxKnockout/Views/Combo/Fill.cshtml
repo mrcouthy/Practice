@@ -1,0 +1,17 @@
+﻿<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/knockout-3.2.0.debug.js"></script>
+    <script src="~/Scripts/knoLists.js"></script>
+    <span data-bind="foreach: seats">
+        <input data-bind="value: name" />
+        <select data-bind="options: $root.availableData, value: meal, optionsText: 'colName'">
+        </select>
+    </span>
+    <h4>Nos: <span data-bind="text: seats().length"></span></h4>
+    <button data-bind="click: addSeats, enable: seats().length < 5">Add more seat</button>
+</body>
+</html>
