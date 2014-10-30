@@ -14,10 +14,15 @@ $(function () {
 
     self.phones = ko.observableArray(phones);
    
+
+    this.addPhone = function ()
+    {
+        self.phones.push("5536114");
+    }
     
 };
 
-    ko.applyBindings(new ViewModel('Dhiraj', 'Bajracharya', ['9841190907', '5536114'])); // This makes Knockout get to work
+    ko.applyBindings(new ViewModel('Dhiraj', 'Bajracharya', ['9841190907'])); // This makes Knockout get to work
 });
 
 
