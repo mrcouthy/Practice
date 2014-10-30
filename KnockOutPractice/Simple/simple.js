@@ -25,6 +25,8 @@ $(function () {
        
         //when using observables always access members as as function ie newphone() => value not noewphone => observable
     }
+
+    this.selectedPhone = ko.observable("");
     
 };
 

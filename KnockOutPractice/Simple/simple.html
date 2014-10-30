@@ -15,8 +15,10 @@
 
     <input  data-bind="value:newPhone" />
     <button data-bind="click:addPhone">Add Phone</button>
-    <select  size="5" data-bind="options: phones"> </select>
-   
+    <select  size="5" data-bind="options: phones,selectedOptions:selectedPhone"> </select>
+   <hr />
+    You have selecetd the phone Number :
+    <span data-bind="text:selectedPhone"></span>
 
  
 
