@@ -14,10 +14,12 @@ $(function () {
 
     self.phones = ko.observableArray(phones);
    
+    this.newPhone = ko.observable();
 
     this.addPhone = function ()
     {
-        self.phones.push("5536114");
+        this.phones.push(this.newPhone());// try this with no brackets ie this.newPhone and get mad !
+        //when using observables always access members as as function ie newphone() => value not noewphone => observable
     }
     
 };
