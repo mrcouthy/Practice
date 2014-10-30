@@ -18,7 +18,11 @@ $(function () {
 
     this.addPhone = function ()
     {
-        this.phones.push(this.newPhone());// try this with no brackets ie this.newPhone and get mad !
+        if (this.newPhone()!="") {
+            this.phones.push(this.newPhone());// try this with no brackets ie this.newPhone and get mad !
+            this.newPhone("");
+        }
+       
         //when using observables always access members as as function ie newphone() => value not noewphone => observable
     }
     
