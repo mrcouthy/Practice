@@ -1,10 +1,10 @@
 $(function () {
 // Here's my data model
-var ViewModel = function() {
-   this.name = ko.observable('');
+var ViewModel = function(name) {
+   this.name = ko.observable(name);
 };
  
-ko.applyBindings(new ViewModel()); // This makes Knockout get to work
+ko.applyBindings(new ViewModel('Dhiraj')); // This makes Knockout get to work
 });
 
 
