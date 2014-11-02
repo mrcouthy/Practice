@@ -12,8 +12,9 @@ $(function () {
             return this.lastName() + ' ' + this.firstName();
         }, self);
         //arrya example
-        self.phones = ko.observableArray(phones);
+        self.phones = ko.observableArray([]);
 
+        self.phones (phones);
         this.newPhone = ko.observable();
 
         this.addPhone = function () {
@@ -27,8 +28,12 @@ $(function () {
         this.selectedPhone = ko.observable("");
 
         //more complex select example
+       // var dropDown = [{ name: "dhiraj", id: "1", phone: "9841190907" }, { name: "Hero", id: "2", phone: "5536114" }];
+
     };
-    ko.applyBindings(new ViewModel('Dhiraj', 'Bajracharya', ['9841190907'])); // This makes Knockout get to work
+
+   
+    ko.applyBindings(new ViewModel('Dhiraj', 'Bajracharya', ['9841190907', '9841228718', '5536114', '123456', '5425654'])); // This makes Knockout get to work
 });
 
 
