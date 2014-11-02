@@ -1,20 +1,25 @@
 <!doctype html>
 <html>
 <head>
-</head>
-<body>
+    <title></title>
     <script type="text/javascript" src="..\knockout-3.1.js"></script>
     <script type="text/javascript" src="..\jquery-2.1.1.js"></script>
     <script type="text/javascript" src="complex.js"></script>
-   
-   
-    <select  size="5" data-bind="options: phones,selectedOptions:selectedPhone"> </select>
-   <hr />
+</head>
+
+
+
+<body>
+    <select size="5" data-bind="options: persons,selectedOptions:selectedPerson ,optionsValue:'id',optionsText:'name' "></select>
+    <hr />
+
+    <select size="5" data-bind="options: phones,selectedOptions:selectedPhone ,optionsValue:'phone',optionsText:'name' "></select>
+    <hr />
+    You have selecetd the Person :
+    <span data-bind="text:selectedPerson"></span>
     You have selecetd the phone Number :
     <span data-bind="text:selectedPhone"></span>
 
- 
-
+    
 </body>
-
 </html>
