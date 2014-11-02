@@ -1,6 +1,7 @@
 $(function () {
     // Here's my data model
     var ViewModel = function (firstName, lastName, phones) {
+        var tesphones = ['abc', 'def', 'ghi'];
         var self = this;
         self.firstName = ko.observable(firstName);
         self.lastName = ko.observable(lastName);
@@ -12,9 +13,9 @@ $(function () {
             return this.lastName() + ' ' + this.firstName();
         }, self);
         //arrya example
-        self.phones = ko.observableArray([]);
+        self.phones = ko.observableArray(phones);
 
-        self.phones (phones);
+        self.phones(tesphones);
         this.newPhone = ko.observable();
 
         this.addPhone = function () {
