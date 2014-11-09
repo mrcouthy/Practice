@@ -55,9 +55,9 @@ namespace NewThings
     ///Func => takes input and gives output
     ///Action => returns void
     ///Predicate => Extension to Func ,Only for check purpose output is always boolean
-    class Program
+    public class DelegateLabdaFuncActionPredicate
     {
-        static void Main()
+        public static void Test()
         {
             Func<Double, Double> funcPointer = r => 3.14 * r * r;
             double area = funcPointer.Invoke(20);
@@ -66,10 +66,10 @@ namespace NewThings
             actionPointer.Invoke("20");
 
             Predicate<string> CheckGeraterThan5 = x => x.Length > 5;
-            bool b= CheckGeraterThan5("Dhiraj 132");
+            bool b = CheckGeraterThan5("Dhiraj 132");
 
             //uses in .Net
-            List<String> s = new List<string>() {"1","2424234"};
+            List<String> s = new List<string>() { "1", "2424234" };
             string xy = s.Find(CheckGeraterThan5);
 
             //Expression tree (5+4)-(1+2)
@@ -77,7 +77,7 @@ namespace NewThings
                 Expression.Constant(4));
             BinaryExpression b2 = Expression.MakeBinary(ExpressionType.Add, Expression.Constant(1),
               Expression.Constant(2));
-            BinaryExpression b3 = Expression.MakeBinary(ExpressionType.Subtract, b1,b2);
+            BinaryExpression b3 = Expression.MakeBinary(ExpressionType.Subtract, b1, b2);
             int result = Expression.Lambda<Func<int>>(b3).Compile()();
 
         }
