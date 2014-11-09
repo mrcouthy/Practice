@@ -25,8 +25,15 @@ namespace NewThings
             {
                 Console.WriteLine(i);
             }
+
+            foreach (int i in RunningTotal())
+            {
+                Console.WriteLine(i);
+            }
+
         }
 
+        //Use of Yield keyword for filtering list without a temporary list
         private static IEnumerable<int> Filter()
         {
             foreach (int i in Mylist)
@@ -34,6 +41,20 @@ namespace NewThings
                 if (i > 3)
                 {
                     yield return i;
+                }
+            }
+        }
+
+        //Statefull Iteration
+        private static IEnumerable<int> RunningTotal()
+        {
+            int runningTotal = 0;
+            foreach (int i in Mylist)
+            {
+                if (i > 3)
+                {
+                    runningTotal += i;
+                    yield return (runningTotal );
                 }
             }
         }
