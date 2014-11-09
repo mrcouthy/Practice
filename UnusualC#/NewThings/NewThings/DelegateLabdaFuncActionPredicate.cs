@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,6 +67,18 @@ namespace NewThings
 
             Predicate<string> CheckGeraterThan5 = x => x.Length > 5;
             bool b= CheckGeraterThan5("Dhiraj 132");
+
+            //uses in .Net
+            List<String> s = new List<string>() {"1","2424234"};
+            string xy = s.Find(CheckGeraterThan5);
+
+            //Expression tree (5+4)-(1+2)
+            BinaryExpression b1 = Expression.MakeBinary(ExpressionType.Add, Expression.Constant(5),
+                Expression.Constant(4));
+            BinaryExpression b2 = Expression.MakeBinary(ExpressionType.Add, Expression.Constant(1),
+              Expression.Constant(2));
+            BinaryExpression b3 = Expression.MakeBinary(ExpressionType.Subtract, b1,b2);
+            int result = Expression.Lambda<Func<int>>(b3).Compile()();
 
         }
     }
