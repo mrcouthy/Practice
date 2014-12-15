@@ -10,14 +10,22 @@ echo timestamp: "%timestamp%"
 echo fullstamp: "%fullstamp%"
 REM got date now do backup
 
+REM Setup Variables
+set backupFolder=D:\j
+set sourceFolder=\\j
+set publishFolder=D:\j
+
+echo Backup Folder: %backupFolder%%fullstamp%\
+echo Source Folder: %sourceFolder%
+echo Pubish Folder: %publishFolder%
+echo Verify
+pause
 
 @echo backuping files
-set backupDrive=\\sharedFolder\BackupPath
-echo The variable is "%backupDrive%%date%"
-@xcopy /j /c /y /s  \\sourcefolder\ %backupDrive%%fullstamp%\
+@xcopy /j /c /y /s %publishFolder% %backupFolder%%fullstamp%\
 pause
 
 @echo Publishing
-@xcopy /j /c /y /s /exclude:exclude.txt C:\From \\PublishFolder\Publish
+@xcopy /j /c /y /s /exclude:exclude.txt %sourceFolder% %publishFolder%
 @echo 
 pause
