@@ -12,7 +12,7 @@ namespace Hangfire.Highlighter
         public void Configuration(IAppBuilder app)
         {
             app.UseHangfire(
-                config => config.UseSqlServerStorage("TryHf"));
+                config => config.UseSqlServerStorage("HighlighterDb"));
         }
       
     }

@@ -8,6 +8,7 @@ namespace TryHf.Controllers
 {
     public class HomeController : Controller
     {
+        //http://docs.hangfire.io/en/latest/tutorials/highlight.html
         public string Index()
         {
             return "Hello";
