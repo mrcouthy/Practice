@@ -134,7 +134,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412260919423_AddCodeSnippet.cs" />
+    <Compile Include="Migrations\201412260919423_AddCodeSnippet.Designer.cs">
+      <DependentUpon>201412260919423_AddCodeSnippet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CodeSnippet.cs" />
     <Compile Include="Models\HighlighterDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartUp.cs" />
@@ -158,6 +163,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201412260919423_AddCodeSnippet.resx">
+      <DependentUpon>201412260919423_AddCodeSnippet.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

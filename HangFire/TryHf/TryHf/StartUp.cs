@@ -11,6 +11,7 @@ namespace Hangfire.Highlighter
     {
         public void Configuration(IAppBuilder app)
         {
+            //careates required db's for hangfire.
             app.UseHangfire(
                 config => config.UseSqlServerStorage("HighlighterDb"));
         }
