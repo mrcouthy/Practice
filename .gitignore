@@ -38,3 +38,8 @@
 /Log4NetPractice/Log4NetWeb/Log4NetWeb/bin
 /Log4NetPractice/Log4NetWeb/Log4NetWeb/obj
 /Log4NetPractice/Log4NetWeb/packages
+/ComboBoxKnockout/packages
+/ComboBoxKnockout/ComboBoxKnockout/bin
+/ComboBoxKnockout/ComboBoxKnockout/obj
+
+/ComboBoxKnockout/*.suo
