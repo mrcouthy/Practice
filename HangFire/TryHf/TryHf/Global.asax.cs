@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using StackExchange.Profiling.EntityFramework6;
 
 namespace TryHf
 {
@@ -14,6 +15,7 @@ namespace TryHf
     {
         protected void Application_Start()
         {
+            MiniProfilerEF6.Initialize();
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
