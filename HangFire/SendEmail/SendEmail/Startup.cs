@@ -13,6 +13,9 @@ namespace MyWebApplication
         {
             app.UseHangfire(config =>
             {
+                //The SqlServerStorage class will install all database tables automatically 
+                //on application start-up (but you are able to do it manually).
+
                 config.UseSqlServerStorage("emailDb");
                 config.UseServer();
             });
