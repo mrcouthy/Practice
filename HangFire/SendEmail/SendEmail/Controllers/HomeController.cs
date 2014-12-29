@@ -35,7 +35,7 @@ namespace HangFire.Mailer.Controllers
         }
 
         [LogFailure]
-        [AutomaticRetry(Attempts=20)]
+        [AutomaticRetry(Attempts=2)]
         public static void NotifyNewComment(int commentId)
         {
             // Prepare Postal classes to work outside of ASP.NET request
@@ -44,7 +44,8 @@ namespace HangFire.Mailer.Controllers
             engines.Add(new FileSystemRazorViewEngine(viewsPath));
 
             var emailService = new EmailService(engines);
-
+            //--try breaking and see if hangfire retrites it
+            //emailService = null;
             // Get comment and send a notification.
             using (var db = new MailerDbContext())
             {
