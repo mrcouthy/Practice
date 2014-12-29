@@ -6,6 +6,7 @@ using Hangfire;
 using System.Web.Hosting;
 using System.IO;
 using Postal;
+using SendEmail;
 
 namespace HangFire.Mailer.Controllers
 {
@@ -32,6 +33,9 @@ namespace HangFire.Mailer.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [LogFailure]
+        [AutomaticRetry(Attempts=20)]
         public static void NotifyNewComment(int commentId)
         {
             // Prepare Postal classes to work outside of ASP.NET request

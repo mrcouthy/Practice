@@ -119,6 +119,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LogIt.cs" />
     <Compile Include="Migrations\201412282324280_InitialCreate.cs" />
     <Compile Include="Migrations\201412282324280_InitialCreate.Designer.cs">
       <DependentUpon>201412282324280_InitialCreate.cs</DependentUpon>
