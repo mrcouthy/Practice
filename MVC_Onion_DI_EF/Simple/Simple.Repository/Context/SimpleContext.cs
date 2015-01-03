@@ -11,6 +11,11 @@ namespace Simple.Repository.Context
 {
     public class SimpleContext : DbContext
     {
+        public SimpleContext()
+            : base()
+        {
+            //This is required for mvc scaffolding only!
+        }
         private static SqlProviderServices instance = SqlProviderServices.Instance;
         public SimpleContext(string configuration)
             : base(configuration)
