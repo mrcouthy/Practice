@@ -1,4 +1,6 @@
-﻿using Simple.Interface.Repository;
+﻿using Simple.Domain;
+using Simple.Interface.Repository;
+using Simple.Repository.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,26 @@ namespace Simple.Repository
         {
             this.configuration = configuration;
         }
-        public Domain.Users GetUsers(string userID)
+
+        public Users SaveUsers(Users user)
         {
-            throw new NotImplementedException();
+            using (var context = new SimpleContext(this.configuration))
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+            return user;
+        }
+
+        public Users GetUsers(string userID)
+        {
+            using (var context = new SimpleContext(this.configuration))
+            {
+                var res = (from user in context.Users
+                           where user.UserId == userID
+                           select user);
+                return res.FirstOrDefault();
+            }
         }
     }
 }

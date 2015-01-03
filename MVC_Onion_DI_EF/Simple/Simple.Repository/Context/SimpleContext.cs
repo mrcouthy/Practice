@@ -1,0 +1,21 @@
+﻿using Simple.Domain;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.SqlServer;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Simple.Repository.Context
+{
+    public class SimpleContext : DbContext
+    {
+        private static SqlProviderServices instance = SqlProviderServices.Instance;
+        public SimpleContext(string configuration)
+            : base(configuration)
+        {
+        }
+        public virtual DbSet<Users> Users { get; set; }
+    }
+}

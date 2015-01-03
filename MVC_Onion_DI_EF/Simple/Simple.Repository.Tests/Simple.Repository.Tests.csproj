@@ -34,6 +34,7 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,9 +44,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Simple.Domain\Simple.Domain.csproj">
+      <Project>{d3a9f13b-4e01-47b8-b44d-3d3e1e3972ed}</Project>
+      <Name>Simple.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simple.Interface\Simple.Interface.csproj">
+      <Project>{5d2867bd-d2a8-4cc9-8b0c-a3ba19e7387e}</Project>
+      <Name>Simple.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simple.Repository\Simple.Repository.csproj">
+      <Project>{2c66416d-edab-46d4-999f-55c0628f3332}</Project>
+      <Name>Simple.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
