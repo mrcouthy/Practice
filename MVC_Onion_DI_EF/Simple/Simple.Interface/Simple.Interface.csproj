@@ -40,6 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IUsersRepository.cs" />
+    <Compile Include="Service\IUsersService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Simple.Domain\Simple.Domain.csproj">
+      <Project>{d3a9f13b-4e01-47b8-b44d-3d3e1e3972ed}</Project>
+      <Name>Simple.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
