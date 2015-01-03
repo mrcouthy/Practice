@@ -1,4 +1,6 @@
-﻿using Simple.Repository;
+﻿using Simple.Interface.Repository;
+using Simple.Interface.Service;
+using Simple.Repository;
 using Simple.Service;
 using System;
 using System.Collections.Generic;
@@ -20,11 +22,11 @@ namespace Simple.Desktop
             InitializeComponent();
         }
 
-        UsersService us;
+        IUsersService us;
         private void Start_Load(object sender, EventArgs e)
         {
             string constr = ConfigurationManager.ConnectionStrings["SimpleConnection"].ConnectionString;
-            UsersRepository ur = new UsersRepository(constr);
+            IUsersRepository ur = new UsersRepository(constr);
              us = new UsersService(ur);
 
         }

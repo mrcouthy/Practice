@@ -1,4 +1,5 @@
 ﻿using Simple.Domain;
+using Simple.Interface.Repository;
 using Simple.Interface.Service;
 using Simple.Repository;
 using System;
@@ -11,8 +12,8 @@ namespace Simple.Service
 {
     public class UsersService : IUsersService
     {
-        UsersRepository usersRepository;
-        public UsersService(UsersRepository usersRepository)
+        IUsersRepository usersRepository;
+        public UsersService(IUsersRepository usersRepository)
         {
             this.usersRepository = usersRepository;
         }

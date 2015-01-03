@@ -10,5 +10,10 @@ namespace Simple.Interface.Repository
     public interface IUsersRepository
     {
         Users GetUsers(string userID);
+
+        IEnumerable<Users> GetAllUsers();
+
+        Users SaveUsers(Users user);
+        
     }
 }

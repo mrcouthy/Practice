@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Simple.Domain;
+using Simple.Interface.Repository;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,7 +12,7 @@ namespace Simple.Repository.Tests
 {
     public class UsersRepositoryTest
     {
-        UsersRepository usersRepository;
+        IUsersRepository usersRepository;
         [SetUp]
         public void SetConnections()
         {

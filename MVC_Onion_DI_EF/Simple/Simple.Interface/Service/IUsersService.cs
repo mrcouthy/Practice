@@ -10,5 +10,6 @@ namespace Simple.Interface.Service
     public interface IUsersService
     {    
         Users GetUsers(string userID);
+        IEnumerable<Users> GetUsers();
     }
 }

@@ -1,4 +1,6 @@
-﻿using Simple.Repository;
+﻿using Simple.Interface.Repository;
+using Simple.Interface.Service;
+using Simple.Repository;
 using Simple.Service;
 using System;
 using System.Collections.Generic;
@@ -14,8 +16,8 @@ namespace Simple.Web.Controllers
         public ActionResult Index()
         {
             string constr = ConfigurationManager.ConnectionStrings["SimpleConnection"].ConnectionString;
-            UsersRepository ur = new UsersRepository(constr);
-            UsersService us = new UsersService(ur);
+            IUsersRepository ur = new UsersRepository(constr);
+            IUsersService us = new UsersService(ur);
             return this.View(us.GetUsers());
         }
     }
