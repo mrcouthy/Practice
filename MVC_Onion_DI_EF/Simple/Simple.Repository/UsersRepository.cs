@@ -37,5 +37,15 @@ namespace Simple.Repository
                 return res.FirstOrDefault();
             }
         }
+
+        public  IEnumerable<Users> GetAllUsers()
+        {
+            using (var context = new SimpleContext(this.configuration))
+            {
+                var res = (from user in context.Users
+                           select user);
+                return res.ToList();
+            }
+        }
     }
 }

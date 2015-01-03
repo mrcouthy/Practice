@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Simple.Repository;
+using Simple.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -15,6 +18,20 @@ namespace Simple.Desktop
         public Start()
         {
             InitializeComponent();
+        }
+
+        UsersService us;
+        private void Start_Load(object sender, EventArgs e)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["SimpleConnection"].ConnectionString;
+            UsersRepository ur = new UsersRepository(constr);
+             us = new UsersService(ur);
+
+        }
+
+        private void btnLoadUsers_Click(object sender, EventArgs e)
+        {
+            usersGrid.DataSource = us.GetUsers();
         }
     }
 }

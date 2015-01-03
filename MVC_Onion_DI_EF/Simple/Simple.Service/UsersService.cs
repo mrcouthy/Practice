@@ -1,4 +1,6 @@
-﻿using Simple.Interface.Service;
+﻿using Simple.Domain;
+using Simple.Interface.Service;
+using Simple.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,20 @@ namespace Simple.Service
 {
     public class UsersService : IUsersService
     {
-        Domain.Users IUsersService.GetUsers(string userID)
+        UsersRepository usersRepository;
+        public UsersService(UsersRepository usersRepository)
         {
-            throw new NotImplementedException();
+            this.usersRepository = usersRepository;
+        }
+
+        public Users GetUsers(string userID)
+        {
+            return usersRepository.GetUsers(userID);
+        }
+
+        public IEnumerable<Users> GetUsers()
+        {
+            return usersRepository.GetAllUsers();
         }
     }
 }
