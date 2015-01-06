@@ -61,3 +61,10 @@
 /HangFire/TryHf/TryHf/bin
 /WindowsService/MyWindowsService/MyWindowsService/obj
 /WindowsService/MyWindowsService/MyWindowsService/bin
+/MVC_Onion_DI_EF/Simple/Simple.Interface/obj
+/MVC_Onion_DI_EF/Simple/Simple.Interface/bin
+/MVC_Onion_DI_EF/Simple/Simple.Service/bin
+/MVC_Onion_DI_EF/Simple/Simple.Service/obj
+/MVC_Onion_DI_EF/Simple/packages
+/MVC_Onion_DI_EF/Simple/Simple.Repository.Tests/obj
+/MVC_Onion_DI_EF/Simple/Simple.Repository.Tests/bin
