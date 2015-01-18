@@ -3,22 +3,22 @@
 <head>
 </head>
 <body>
-<script type ="text/javascript" src ="angular.js"></script>
-<script type ="text/javascript" src ="app.js"></script>
+	<script type ="text/javascript" src ="angular.js"></script>
+	<script type ="text/javascript" src ="app.js"></script>
 
-<div>
-I am {{20+8}}
-Hello {{'Dhiraj' + ' ' + 'Bajracharaya'}}
-</div>
-<div ng-controller='StoreController as store'>
-<div ng-repeat='product in store.products'>
-<div ng-hide='product.soldOut'>
-Product Name = {{product.name}}
-<br>
-Product Price ={{product.price}}
-<br>
-<button ng-show='product.canPurchase'>Buy</button>
-<br>
-</div>
-</div>
-</body>
+	<div>
+		I am {{20+8}}
+		Hello {{'Dhiraj' + ' ' + 'Bajracharaya'}}
+	</div>
+	<div ng-controller='StoreController as store'>
+		<div ng-repeat='product in store.products'>
+			<div ng-hide='product.soldOut'>
+				Product Name = {{product.name}}
+				<br>
+				Product Price ={{product.price}}
+				<br>
+				<button ng-show='product.canPurchase'>Buy</button>
+				<br>
+			</div>
+		</div>
+	</body>
