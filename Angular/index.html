@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='store'>
+<html ng-app='gemStore'>
 <head>
 </head>
 <body>
@@ -10,4 +10,8 @@
 I am {{20+8}}
 Hello {{'Dhiraj' + ' ' + 'Bajracharaya'}}
 </div>
+<div ng-controller='StoreController as store'>
+Product Name = {{store.product.name}}
+<br>
+Product Price ={{store.product.price}}
 </body>
