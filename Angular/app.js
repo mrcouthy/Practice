@@ -1,14 +1,26 @@
 (function(){
 	var app = angular.module("gemStore",[]);
 	
-	var gem={
+	var gems=[{
 	name:'Diamond',
 	price:20,
-	description:'Glass like'
-	};
+	soldOut:false,
+	canPurchase:false
+	},{
+	name:'Ruby',
+	price:10,
+	soldOut:true,
+	canPurchase:true
+	},
+	{
+	name:'Yayy',
+	price:100,
+	soldOut:false,
+	canPurchase:true
+	}];
 	
 	app.controller('StoreController',function(){
-  	this.product=gem;
+  	this.products=gems;
   	});
 })();
  

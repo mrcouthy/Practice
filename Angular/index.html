@@ -11,7 +11,14 @@ I am {{20+8}}
 Hello {{'Dhiraj' + ' ' + 'Bajracharaya'}}
 </div>
 <div ng-controller='StoreController as store'>
-Product Name = {{store.product.name}}
+<div ng-repeat='product in store.products'>
+<div ng-hide='product.soldOut'>
+Product Name = {{product.name}}
 <br>
-Product Price ={{store.product.price}}
+Product Price ={{product.price}}
+<br>
+<button ng-show='product.canPurchase'>Buy</button>
+<br>
+</div>
+</div>
 </body>
