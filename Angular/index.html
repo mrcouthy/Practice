@@ -15,7 +15,7 @@
 			<div ng-hide='product.soldOut'>
 				Product Name = {{product.name}}
 				<br>
-				Product Price ={{product.price}}
+				Product Price ={{product.price | currency}}
 				<br>
 				<button ng-show='product.canPurchase'>Buy</button>
 				<br>
