@@ -6,18 +6,6 @@
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body ng-controller="StoreController as store">
-    <Div>
-    Filters Experiment
-    <div>
-     Currency:  {{65 | currency}}<br>
-     Numbers with decimal place:  {{65 | number:4}}<br>
-     Lower Case: {{'HELLO'|lowercase}}<br>
-     Upper Case: {{'hello'|uppercase}}<br>
-     Dates : {{1288323623006 | date:'MM/dd/yyyy @ h:mma'}}
-    </div>
-    </Div>
-    <!--  Products Container  -->
-    <div class="list-group">
       <!--  Product Container  -->
       <div class="list-group-item" ng-repeat="product in store.products">
         <h3>
@@ -33,6 +21,5 @@
           </ul>
         </div>
       </div>
-    </div>
   </body>
 </html>
