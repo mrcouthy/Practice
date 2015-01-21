@@ -2,8 +2,8 @@ $(function () {
 
 //Chosen
 // Chosenify every multiple select DOM elements with class 'chosen'
-        $('select[multiple].chosen').chosen();
-        var MY_SELECT = $($('select[multiple].chosen').get(0));
+        $('#gogo').chosen();
+        var MY_SELECT = $($('#gogo').get(0));
 
         $('#get-order').click(function()
         {
