@@ -2,14 +2,44 @@
 <html>
 <head>
 </head>
-<body>
-    <script src="~/Scripts/jquery-2.1.1.js"></script>
-    <script src="~/Scripts/knockout-3.2.0.debug.js"></script>
-    <script src="~/Scripts/simpleCol.js"></script>
+    <body>
+        <script src="~/Scripts/knockout-3.2.0.debug.js"></script>
+        <script src="~/Scripts/jquery-2.1.1.js"></script>
+   
+        
+    
+        <script src="~/Scripts/vendor/chosen/chosen.jquery.min.js"></script>
+        <script src="~/Scripts/chosen.order.jquery.min.js"></script>
+        <script src="~/Scripts/simple.js"></script>
+        <link href="~/Scripts/vendor/chosen/chosen.min.css" rel="stylesheet" />
+   
+      
+        <link rel="stylesheet" type="text/css" href="~/Scripts/Bootstrap/bootstrap.min.css">
 
         <select data-bind="options: $root.availableData,   optionsText: 'colName'"></select>
- 
-   
   
-</body>
+        <input data-bind="value:newPhone" />
+        <button data-bind="click:addPhone">Add Phone</button>
+        <div class="input-group">
+            <select id="gogo" multiple style="width: 450px;" data-bind="options: phones"> </select>
+            <!--<select size="5" data-bind="options: phones,selectedOptions:selectedPhone,optionsText:phones,value:phones"> </select>-->
+            <hr />
+        </div>
+        You have selecetd the phone Number :
+        <span data-bind="text:selectedPhone"></span>
+
+
+        <div class="col-lg-3 col-sm-6">
+            <button type="button" id="get-order" class="btn btn-primary" style="width: 150px">Retrieve order</button>
+            <br><br>
+            <ol id="order-list"></ol>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-1 col-sm-6">
+            <button type="button" id="set-order" class="btn btn-success" style="width: 150px">Set order</button>
+            <br><br>
+            <input id="order" type="text" class="form-control" value="poire,  ananas, banane  ,kiwi " style="width: 250px;">
+        </div>
+
+    </body>
 </html>

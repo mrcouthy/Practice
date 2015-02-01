@@ -1,6 +1,6 @@
  
 $(document).ready(function () {
-    
+    $('#gogo').chosen();
     ko.applyBindings(new ReportViewer.ViewModel( ));
 });
 

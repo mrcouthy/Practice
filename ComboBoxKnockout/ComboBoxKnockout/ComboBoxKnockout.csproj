@@ -119,11 +119,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Bootstrap\bootstrap-theme.css" />
+    <Content Include="Scripts\Bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Scripts\Bootstrap\bootstrap.css" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.css" />
+    <Content Include="Scripts\chosen.order.jquery.min.js" />
+    <Content Include="Scripts\simple.js" />
     <Content Include="Scripts\simpleCol.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\knockout-3.2.0.debug.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
     <Content Include="Scripts\knoLists.js" />
+    <Content Include="Scripts\vendor\chosen\chosen-sprite%402x.png" />
+    <Content Include="Scripts\vendor\chosen\chosen-sprite.png" />
+    <Content Include="Scripts\vendor\chosen\chosen.jquery.min.js" />
+    <Content Include="Scripts\vendor\chosen\chosen.min.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -145,6 +155,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Combo\Simple.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Scripts\Bootstrap\bootstrap.css.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
