@@ -25,3 +25,32 @@ points.sort(function(a, b){return a-b});
 
 Join arrays
 var myChildren = myGirls.concat(myBoys);
+
+
+
+JQ
+___
+$.each()
+
+$.inArray()
+
+KO(http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html)
+___
+ko.utils.arrayForEach
+ko.utils.arrayFilter
+ko.utils.arrayFirst
+ko.utils.arrayMap
+ko.utils.arrayGetDistinctValues
+ko.utils.compareArrays
+
+ko.utils.stringStartsWith
+
+
+ ko.utils.arrayForEach(this.items(), function(item) {
+        var value = parseFloat(item.priceWithTax());
+        if (!isNaN(value)) {
+            total += value;
+        }
+    });
+
+The result of ko.utils.compareArrays is an array that contains items with a status property (added, deleted, or retained) and a value property holding the original item.
