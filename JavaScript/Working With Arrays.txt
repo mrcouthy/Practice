@@ -1,0 +1,27 @@
+Arrays
+Js
+__
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.valueOf(); 
+For JavaScript arrays, valueOf() and toString() are equal.
+
+fruits.join(" * ");
+fruits.pop();
+fruits.push("Kiwi");
+Shifting is equivalent to popping, working on the first element instead of the last.
+fruits.shift();    
+fruits.unshift("Lemon");  
+
+The splice() method can be used to add new items to an array: 
+fruits.splice(2, 0, "Lemon", "Kiwi");
+fruits.splice(0,1);        // Removes the first element of fruits 
+
+var citrus = fruits.slice(1, 3); //slices out a piece of an array
+
+fruits.sort();  
+fruits.reverse();
+//Numeric sort
+points.sort(function(a, b){return a-b}); 
+
+Join arrays
+var myChildren = myGirls.concat(myBoys);
