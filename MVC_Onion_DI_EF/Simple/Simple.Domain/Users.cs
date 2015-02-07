@@ -8,14 +8,14 @@ namespace Simple.Domain
 {
     public class Users
     {
-        public int Id { get; set; }
+        public int Id { get;private set; }
 
-        public string FirstName { get; set; }
+        public string FirstName { get;private set; }
 
-        public string LastName { get; set; }
+        public string LastName { get; private set; }
 
-        public string Phone { get; set; }
+        public string Phone { get; private set; }
 
-        public string UserId { get; set; }
+        public string UserId { get; private set; }
     }
 }

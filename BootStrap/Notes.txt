@@ -1,0 +1,62 @@
+Classes
+____
+Container : centered spaces
+container-fluid : enter widht
+xs
+sm
+lg
+Typography
+___
+lead : larger font size
+text-center
+text-justify
+___
+glyphicon glyphicon-briefcase : specifies font and the ico
+
+___
+list-unstyled
+list-inline
+
+===
+Standout
+___
+well well-hd : background color and rounded
+btn : rounded
+btn-lg : lager,padding
+btn-default
+btn-primary
+btn-success
+btn-info
+btn-warning
+====
+Navbar
+
+navbar-brand : home 
+nav : starting point of nav just as btn
+nav-pills : horizontal
+nav-tabs
+navbar-nav:inline horizontal
+navbar-right
+
+
+navbar navbar-default: to div of navbar
+
+navbar-static-top
+navbar-static-fixed
+
+navbar-collapse
+sr-only : Screen readers only
+
+
+
+====
+Bootstrap Javascript
+
+use data-*
+eg data-toggle = collapse: 
+data-target = navbar 
+
+___
+.Dropdown =>Menu
+
+
