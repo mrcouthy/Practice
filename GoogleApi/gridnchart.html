@@ -19,9 +19,34 @@
             background: #f9f9f9 !important;
             text-align: left;
         }
+
+        body {
+            font-size: 12px !important; 
+            font-family: sans-serif;
+        }
     </style>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script charset="utf-8" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        var tableToExcel = (function () {
+            var uri = 'data:application/vnd.ms-excel;base64,'
+                , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" \
+                xmlns:x="urn:schemas-microsoft-com:office:excel" \
+                xmlns="http://www.w3.org/TR/REC-html40"><head>\
+                <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets>\
+                <x:ExcelWorksheet><x:Name>{worksheet}</x:Name>\
+                <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>\
+                </x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook>\
+                </xml><![endif]--></head><body><table>{table}</table></body></html>'
+                , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+                return function (table, name) {
+                if (!table.nodeType) table = document.getElementById(table)
+                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+                window.location.href = uri + base64(format(template, ctx))
+            }
+        })()
+	</script>
     <script type="text/javascript">
         google.load('visualization', '1', { packages: ['table', 'corechart'] });
     </script>
@@ -33,30 +58,50 @@
                 <div class="panel panel-success">
                     <div id='Div7' class="panel-heading">Data</div>
                     <div id='Div8' class="panel-body">
-                        <p><strong>
-                               <a href="https://docs.google.com/spreadsheets/d/1FyEm2YS6GrBtRQUN6x9lf6ODoNDsXJJD6Rh0UG8vSAs/edit#gid=0">2 Level Grouping data from Google Docs</a>
-                           </strong>
+                        <p>
+                            <strong>
+                                <a href="https://docs.google.com/spreadsheets/d/1FyEm2YS6GrBtRQUN6x9lf6ODoNDsXJJD6Rh0UG8vSAs/edit#gid=0">2 Level Grouping data from Google Docs</a>
+                            </strong>
                             <button class="btn btn-info btn-xs" id="a">Load</button>
                         </p>
-                        <p><strong>
-                               <a href="https://docs.google.com/spreadsheets/d/1lKhpAkmqZR3FKbpFXKaWfXLus2WBpTyBxXbEFntcfIQ/edit?usp=sharing">3 Level Grouping data from Google Docs</a>
-                           </strong><button class="btn btn-info btn-xs" id="b">Load</button></p>
-                        <p><strong>
-                               <a href="https://docs.google.com/spreadsheets/d/1qWYqqJH1UBNXzs5rRgFWJvqvpqjQRBQ8WTl-NEhIkBY/edit?usp=sharing">4 Level Grouping data from Google Docs</a>
-                           </strong><button class="btn btn-info btn-xs" id="c">Load</button></p>
+                        <p>
+                            <strong>
+                                <a href="https://docs.google.com/spreadsheets/d/1lKhpAkmqZR3FKbpFXKaWfXLus2WBpTyBxXbEFntcfIQ/edit?usp=sharing">3 Level Grouping data from Google Docs</a>
+                            </strong>
+                            <button class="btn btn-info btn-xs" id="b">Load</button>
+                        </p>
+                        <p>
+                            <strong>
+                                <a href="https://docs.google.com/spreadsheets/d/1qWYqqJH1UBNXzs5rRgFWJvqvpqjQRBQ8WTl-NEhIkBY/edit?usp=sharing">4 Level Grouping data from Google Docs</a>
+                            </strong>
+                            <button class="btn btn-info btn-xs" id="c">Load</button>
+                        </p>
+						<p>
+						<input type="button"  class="btn btn-success" onclick="tableToExcel('datatable', 'W3C Example Table')" value="Export to Excel">
+						</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="panel panel-default">
                     <div id='Div3' class="panel-heading">Table</div>
                     <div id='columnchart' class="panel-body"></div>
                 </div>
             </div>
+            <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div id='Div1' class="panel-heading">Table</div>
+                        <div id='Div2' class="panel-body"></div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div id='Div4' class="panel-heading">Table</div>
+                        <div id='Div5' class="panel-body"></div>
+                    </div>
+            </div>
         </div>
-<!--        <div class="row">
+        <!--        <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div id='Div1' class="panel-heading">Table</div>
@@ -78,6 +123,7 @@
 
         function tableClassHack() {
             var className = 'google-visualization-table-table';
+			$('.' + className).attr("id","datatable");
             $('.' + className).addClass("table table-hover table-condensed");
             $('.' + className).removeClass(className);
         };
@@ -98,7 +144,7 @@
 
             });
 
-            $("#a").click(function() {
+            $("#a").click(function () {
                 selection = a;
                 noOfGroups = 2;
                 $("#Div3").text("2 Level Grouping");
@@ -155,11 +201,11 @@
             };
 
             var chart = new google.visualization.Table(document.getElementById('columnchart'));
-            //var chart1 = new google.visualization.Table(document.getElementById('Div2'));
+            var chart1 = new google.visualization.ColumnChart(document.getElementById('Div2'));
 
             addEventListener(chart, '#columnchart', ['ready']);
             //addEventListener(chart1, '#Div2', ['ready']);
-            
+
             var cols = data.getNumberOfColumns();
             //aggregation columns
             var aggregations = [];
@@ -208,7 +254,7 @@
                     var lo = groupingFieldList[i].length;
                     //console.log(hi + "," + lo);
                     //blank fill cells
-                    for (k=lo; k < hi; k++) {
+                    for (k = lo; k < hi; k++) {
                         row[k] = { v: '', p: { className: 'sub-total' } };
                     }
                     //console.log(grpCols + "," + lo);
@@ -220,12 +266,13 @@
                     }
 
                     var subIndices = data.getFilteredRows(filters);
-                    var index = subIndices[subIndices.length - 1] +i +  1;
+                    var index = subIndices[subIndices.length - 1] + i + 1;
                     data.insertRows(index, [row]);
                 }
             }
 
             chart.draw(data, {
+                sort: 'disable',
                 cssClassNames: {
                     headerRow: 'someclass',
                     tableRow: 'someclass',
@@ -238,6 +285,7 @@
                 }
             });
 
+            chart1.draw(groupsList[groupsList.length - 1]);
             //chart1.draw(groupsList[0], {
             //    page: 'enable',
             //    pageSize: 10,
@@ -252,6 +300,12 @@
             //        rowNumberCell: 'someclass'
             //    }
             //});
+
+            var view1 = new google.visualization.DataView(groupsList[groupsList.length - 1]);
+            view1.setColumns([0, 1]);
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('Div5'));
+            chart2.draw(view1);
         };
 
         google.setOnLoadCallback(visualization);
