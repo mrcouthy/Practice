@@ -20,13 +20,15 @@
             text-align: left;
         }
 
-        body {
-            font-size: 12px !important; 
+        body
+        {
+            font-size: 12px !important;
             font-family: sans-serif;
         }
     </style>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script charset="utf-8" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
     <script type="text/javascript">
         var tableToExcel = (function () {
             var uri = 'data:application/vnd.ms-excel;base64,'
@@ -40,13 +42,39 @@
                 </xml><![endif]--></head><body><table>{table}</table></body></html>'
                 , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
                 , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
-                return function (table, name) {
-                if (!table.nodeType) table = document.getElementById(table)
-                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
-                window.location.href = uri + base64(format(template, ctx))
+            return function (table, name) {
+                if (!table.nodeType) table = document.getElementById(table);
+                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML };
+                var y = format(template, ctx);
+                console.log(y);
+                var x = base64(y);
+                console.log(x);
+                window.location.href = uri + x;
             }
-        })()
-	</script>
+        })();
+
+        function pdfFromHTML(table) {
+            var doc = new jsPDF('l', 'pt', 'letter');
+            var source = $('#' + table).get(0);
+            var margins = {
+                top: 40,
+                bottom: 40,
+                left: 40,
+                width: 700
+            };
+            doc.fromHTML(
+            source, // [Refer Exact code tutorial][2]HTML string or DOM elem ref.
+            margins.left,    // x coord
+            margins.top,    // y coord
+            {
+                'width': margins.width// max width of content on PDF                 				 
+            },
+            function (dispose) {
+                doc.save('Test.pdf');
+            },
+            margins);
+        };
+    </script>
     <script type="text/javascript">
         google.load('visualization', '1', { packages: ['table', 'corechart'] });
     </script>
@@ -58,47 +86,54 @@
                 <div class="panel panel-success">
                     <div id='Div7' class="panel-heading">Data</div>
                     <div id='Div8' class="panel-body">
-                        <p>
-                            <strong>
-                                <a href="https://docs.google.com/spreadsheets/d/1FyEm2YS6GrBtRQUN6x9lf6ODoNDsXJJD6Rh0UG8vSAs/edit#gid=0">2 Level Grouping data from Google Docs</a>
-                            </strong>
-                            <button class="btn btn-info btn-xs" id="a">Load</button>
-                        </p>
-                        <p>
-                            <strong>
-                                <a href="https://docs.google.com/spreadsheets/d/1lKhpAkmqZR3FKbpFXKaWfXLus2WBpTyBxXbEFntcfIQ/edit?usp=sharing">3 Level Grouping data from Google Docs</a>
-                            </strong>
-                            <button class="btn btn-info btn-xs" id="b">Load</button>
-                        </p>
-                        <p>
-                            <strong>
-                                <a href="https://docs.google.com/spreadsheets/d/1qWYqqJH1UBNXzs5rRgFWJvqvpqjQRBQ8WTl-NEhIkBY/edit?usp=sharing">4 Level Grouping data from Google Docs</a>
-                            </strong>
-                            <button class="btn btn-info btn-xs" id="c">Load</button>
-                        </p>
-						<p>
-						<input type="button"  class="btn btn-success" onclick="tableToExcel('datatable', 'W3C Example Table')" value="Export to Excel">
-						</p>
+                        <div class="col-md-8">
+                            <p>
+                                <strong>
+                                    <a href="https://docs.google.com/spreadsheets/d/1FyEm2YS6GrBtRQUN6x9lf6ODoNDsXJJD6Rh0UG8vSAs/edit#gid=0">2 Level Grouping data from Google Docs</a>
+                                </strong>
+                                <button class="btn btn-info btn-xs" id="a">Load</button>
+                            </p>
+                            <p>
+                                <strong>
+                                    <a href="https://docs.google.com/spreadsheets/d/1lKhpAkmqZR3FKbpFXKaWfXLus2WBpTyBxXbEFntcfIQ/edit?usp=sharing">3 Level Grouping data from Google Docs</a>
+                                </strong>
+                                <button class="btn btn-info btn-xs" id="b">Load</button>
+                            </p>
+                            <p>
+                                <strong>
+                                    <a href="https://docs.google.com/spreadsheets/d/1qWYqqJH1UBNXzs5rRgFWJvqvpqjQRBQ8WTl-NEhIkBY/edit?usp=sharing">4 Level Grouping data from Google Docs</a>
+                                </strong>
+                                <button class="btn btn-info btn-xs" id="c">Load</button>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                <input type="button" class="btn btn-success" onclick="tableToExcel('datatable', 'Table')" value="Export to Excel" />
+                            </p>
+                            <p>
+                                <input type="button" class="btn btn-success" onclick="pdfFromHTML('data')" value="Export to PDF" />
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="result">
             <div class="col-md-8">
-                <div class="panel panel-default">
+                <div class="panel panel-default" id="data">
                     <div id='Div3' class="panel-heading">Table</div>
                     <div id='columnchart' class="panel-body"></div>
                 </div>
             </div>
             <div class="col-md-4">
-                    <div class="panel panel-default">
-                        <div id='Div1' class="panel-heading">Table</div>
-                        <div id='Div2' class="panel-body"></div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div id='Div4' class="panel-heading">Table</div>
-                        <div id='Div5' class="panel-body"></div>
-                    </div>
+                <div class="panel panel-default">
+                    <div id='Div1' class="panel-heading">Table</div>
+                    <div id='Div2' class="panel-body"></div>
+                </div>
+                <div class="panel panel-default">
+                    <div id='Div4' class="panel-heading">Table</div>
+                    <div id='Div5' class="panel-body"></div>
+                </div>
             </div>
         </div>
         <!--        <div class="row">
@@ -122,8 +157,8 @@
         var selection = a;
 
         function tableClassHack() {
-            var className = 'google-visualization-table-table';
-			$('.' + className).attr("id","datatable");
+            var className = 'google-visualization-table-table', container = 'google-visualization-table';
+            $('.' + container).attr("id", "datatable");
             $('.' + className).addClass("table table-hover table-condensed");
             $('.' + className).removeClass(className);
         };
