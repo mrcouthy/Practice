@@ -4,7 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Google Visualization API Sample
     </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <style type="text/css">
         .sub-total
         {
@@ -12,213 +12,18 @@
             background: #f9f9f9 !important;
             text-align: right;
         }
+
+        .sub-total-label
+        {
+            font-weight: bold;
+            background: #f9f9f9 !important;
+            text-align: left;
+        }
     </style>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script charset="utf-8" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript">
         google.load('visualization', '1', { packages: ['table', 'corechart'] });
-    </script>
-    <script type="text/javascript">
-        var data = {}, group = {}, groupYear = {};
-        function tableClassHack() {
-            var className = 'google-visualization-table-table';
-            $('.' + className).addClass("table table-bordered  table-hover table-condensed");
-            $('.' + className).removeClass(className);
-        }
-        function drawVisualization() {
-            draw();
-            $(window).resize(function () {
-                if (this.resizeTO) clearTimeout(this.resizeTO);
-                this.resizeTO = setTimeout(function () {
-                    $(this).trigger('resizeEnd');
-                }, 500);
-            });
-
-            $(window).on('resizeEnd', function () {
-                drawChart(groupYear);
-            });
-        }
-
-        function draw() {
-            var query = new google.visualization.Query(
-                'https://docs.google.com/spreadsheets/d/1FyEm2YS6GrBtRQUN6x9lf6ODoNDsXJJD6Rh0UG8vSAs/edit#gid=0');
-            query.send(handleQueryResponse);
-        }
-
-        function handleQueryResponse(response) {
-            if (response.isError()) {
-                alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-                return;
-            }
-
-            window.data = response.getDataTable();
-            render(data);
-        }
-
-        function drawChart(d) {
-            var chart1 = new google.visualization.ColumnChart(document.getElementById('Span1'));
-            chart1.draw(d);
-
-            var options = {
-                title: 'Export',
-                is3D: true,
-            };
-
-
-            var view1 = new google.visualization.DataView(d);
-            view1.setColumns([0, 1]);
-            var view2 = new google.visualization.DataView(d);
-            view2.setColumns([0, 2]);
-
-            var pie1 = new google.visualization.PieChart(document.getElementById('Pie1'));
-            pie1.draw(view1, options);
-
-            options.title = "Import";
-            options.is3D = false;
-
-            var pie2 = new google.visualization.PieChart(document.getElementById('Pie2'));
-            pie2.draw(view2, options);
-        }
-
-        function render(data) {
-            var chart = new google.visualization.Table(document.getElementById('columnchart'));
-
-            addEventListener(chart, '#columnchart', 'ready');
-            addEventListener(chart, '#columnchart', 'page');
-
-            function addEventListener(control, container, event) {
-                google.visualization.events.addListener(control, event,
-                function (event) {
-                    var table = $(container).find(".google-visualization-table-table");
-                    var tr = $(table).find("tr:eq(0)");
-                    $(tr).find('td').wrapInner('<div/>').find('div').unwrap().wrap('<th/>');
-                    $(table).prepend("<thead></thead>");
-                    $(table).find('thead').append(tr);
-                    $(table).find('thead >tr').find('th').addClass("text-center");
-                    tableClassHack();
-                });
-            }
-
-            group = google.visualization.data.group(data, [0, 1],
-            [
-                { 'column': 2, 'aggregation': google.visualization.data.sum, 'type': 'number' },
-                { 'column': 3, 'aggregation': google.visualization.data.sum, 'type': 'number' }
-            ]);
-
-            groupYear = google.visualization.data.group(data, [0],
-            [
-                { 'column': 2, 'aggregation': google.visualization.data.sum, 'type': 'number' },
-                { 'column': 3, 'aggregation': google.visualization.data.sum, 'type': 'number' }
-            ]);
-
-            drawChart(groupYear);
-
-            var a = data.getDistinctValues(0);
-            var b = data.getDistinctValues(1);
-            console.log(a);
-            console.log(b);
-            //var subIndex = data.getFilteredRows([{ column: 0, value: a[1] }]);
-            var cols = data.getNumberOfColumns();
-            console.log(cols);
-            for (var i = 0; i < a.length; i++) {
-                var subIndex = data.getFilteredRows([{ column: 0, value: a[i] }]);
-                //console.log(subIndex);
-            }
-
-            for (i = 0; i < group.getNumberOfRows() ; i++) {
-                var row = [];
-                var val = group.getValue(i, 0);
-                var val2 = group.getValue(i, 1);
-                subIndex = data.getFilteredRows([{ column: 0, value: val }, { column: 1, value: val2 }]);
-                var v = subIndex[subIndex.length - 1] + 1;
-
-                for (var j = 0, temp; j < cols; j++) {
-                    if (j == 0) {
-                        temp = { v: '', p: { className: 'sub-total' } };
-                    } if (j == 1) {
-                        temp = { v: val2 + " Total", p: { className: 'sub-total' } };
-                    } else if (j > 1) {
-                        temp = { v: group.getValue(i, j), p: { className: 'sub-total' } };
-                    }
-                    row[j] = temp;
-                }
-                console.log(row);
-                data.insertRows(v, [row]);
-            }
-
-            for (i = 0; i < groupYear.getNumberOfRows() ; i++) {
-                row = [];
-                val = groupYear.getValue(i, 0);
-                subIndex = data.getFilteredRows([{ column: 0, value: val }]);
-                v = subIndex[subIndex.length - 1] + 2;
-                for (j = 0, temp; j < cols; j++) {
-                    if (j == 0) {
-                        temp = { v: val + " Total", p: { className: 'sub-total' } };
-                    } if (j == 1) {
-                        temp = '';
-                        temp = { v: temp, p: { className: 'sub-total' } };
-                    } else if (j > 1) {
-                        temp = { v: groupYear.getValue(i, j - 1), p: { className: 'sub-total' } };
-                    }
-                    row[j] = temp;
-                }
-                console.log(row);
-                data.insertRows(v, [row]);
-            }
-
-            var formatter = new google.visualization.NumberFormat({ prefix: '$' });
-            formatter.format(data, 2); // Apply formatter to second column
-            formatter.format(data, 3);
-            //data.sort([{ column: 0 }, { column: 1 }]);
-
-            chart.draw(data, {
-                page: 'enable',
-                pageSize: 10,
-                cssClassNames: {
-                    headerRow: 'someclass',
-                    tableRow: 'someclass',
-                    oddTableRow: 'someclass',
-                    selectedTableRow: 'someclass',
-                    hoverTableRow: 'someclass',
-                    headerCell: 'someclass',
-                    tableCell: 'someclass',
-                    rowNumberCell: 'someclass'
-                }
-            });
-
-            var grp = new google.visualization.Table(document.getElementById('Div1'));
-            addEventListener(grp, '#Div1', 'ready');
-            grp.draw(group, {
-                cssClassNames: {
-                    headerRow: 'someclass',
-                    tableRow: 'someclass',
-                    oddTableRow: 'someclass',
-                    selectedTableRow: 'someclass',
-                    hoverTableRow: 'someclass',
-                    headerCell: 'someclass',
-                    tableCell: 'someclass',
-                    rowNumberCell: 'someclass'
-                }
-            });
-
-
-            var grp2 = new google.visualization.Table(document.getElementById('Div2'));
-            addEventListener(grp2, '#Div2', 'ready');
-            grp2.draw(groupYear, {
-                cssClassNames: {
-                    headerRow: 'someclass',
-                    tableRow: 'someclass',
-                    oddTableRow: 'someclass',
-                    selectedTableRow: 'someclass',
-                    hoverTableRow: 'someclass',
-                    headerCell: 'someclass',
-                    tableCell: 'someclass',
-                    rowNumberCell: 'someclass'
-                }
-            });
-        }
-
-        google.setOnLoadCallback(drawVisualization);
     </script>
 </head>
 <body>
@@ -228,58 +33,228 @@
                 <div class="panel panel-success">
                     <div id='Div7' class="panel-heading">Data</div>
                     <div id='Div8' class="panel-body">
-                        <strong><a href="https://docs.google.com/spreadsheets/d/1FyEm2YS6GrBtRQUN6x9lf6ODoNDsXJJD6Rh0UG8vSAs/edit#gid=0">Data from Google Docs</a></strong>
+                        <p><strong>
+                               <a href="https://docs.google.com/spreadsheets/d/1FyEm2YS6GrBtRQUN6x9lf6ODoNDsXJJD6Rh0UG8vSAs/edit#gid=0">2 Level Grouping data from Google Docs</a>
+                           </strong>
+                            <button class="btn btn-info btn-xs" id="a">Load</button>
+                        </p>
+                        <p><strong>
+                               <a href="https://docs.google.com/spreadsheets/d/1lKhpAkmqZR3FKbpFXKaWfXLus2WBpTyBxXbEFntcfIQ/edit?usp=sharing">3 Level Grouping data from Google Docs</a>
+                           </strong><button class="btn btn-info btn-xs" id="b">Load</button></p>
+                        <p><strong>
+                               <a href="https://docs.google.com/spreadsheets/d/1qWYqqJH1UBNXzs5rRgFWJvqvpqjQRBQ8WTl-NEhIkBY/edit?usp=sharing">4 Level Grouping data from Google Docs</a>
+                           </strong><button class="btn btn-info btn-xs" id="c">Load</button></p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-success">
-                    <div id='Div9' class="panel-heading">Pie Chart</div>
-                    <div id='Pie1' class="panel-body"></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-warning">
-                    <div id='Div11' class="panel-heading">Pie Chart</div>
-                    <div id='Pie2' class="panel-body"></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div id='Div6' class="panel-heading">Grouped Chart</div>
-                    <div id='Span1' class="panel-body"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div id='Div3' class="panel-heading">Table with sub-totals</div>
+                    <div id='Div3' class="panel-heading">Table</div>
                     <div id='columnchart' class="panel-body"></div>
                 </div>
             </div>
         </div>
-        <div class="row">
+<!--        <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div id='Div4' class="panel-heading">Year, Month Grouped sub-totals</div>
-                    <div id='Div1' class="panel-body"></div>
-                    <br />
-                </div>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div id='Div5' class="panel-heading">Year sub-totals</div>
+                    <div id='Div1' class="panel-heading">Table</div>
                     <div id='Div2' class="panel-body"></div>
-                    <br />
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
+    <script type="text/javascript">
+        var data = {}, group = {}, groupYear = {};
+
+        var noOfGroups = 2;
+        var groupsList = [];
+        var groupingFieldList = [];
+        var a = 'https://docs.google.com/spreadsheets/d/1FyEm2YS6GrBtRQUN6x9lf6ODoNDsXJJD6Rh0UG8vSAs/edit#gid=0';
+        var b = 'https://docs.google.com/spreadsheets/d/1lKhpAkmqZR3FKbpFXKaWfXLus2WBpTyBxXbEFntcfIQ/edit?usp=sharing';
+        var c = 'https://docs.google.com/spreadsheets/d/1qWYqqJH1UBNXzs5rRgFWJvqvpqjQRBQ8WTl-NEhIkBY/edit?usp=sharing';
+        var selection = a;
+
+        function tableClassHack() {
+            var className = 'google-visualization-table-table';
+            $('.' + className).addClass("table table-hover table-condensed");
+            $('.' + className).removeClass(className);
+        };
+
+        function visualization() {
+
+            getData();
+
+            $("#Div3").text("2 Level Grouping");
+            $(window).resize(function () {
+                if (this.resizeTO) clearTimeout(this.resizeTO);
+                this.resizeTO = setTimeout(function () {
+                    $(this).trigger('resizeEnd');
+                }, 500);
+            });
+
+            $(window).on('resizeEnd', function () {
+
+            });
+
+            $("#a").click(function() {
+                selection = a;
+                noOfGroups = 2;
+                $("#Div3").text("2 Level Grouping");
+                getData();
+            });
+
+            $("#b").click(function () {
+                selection = b;
+                noOfGroups = 3;
+                $("#Div3").text("3 Level Grouping");
+                getData();
+            });
+
+            $("#c").click(function () {
+                selection = c;
+                noOfGroups = 4;
+                $("#Div3").text("4 Level Grouping");
+                getData();
+            });
+        };
+
+        function getData() {
+            groupsList = [];
+            groupingFieldList = [];
+            console.log('no of groups ' + noOfGroups);
+            var query = new google.visualization.Query(selection);
+            query.send(handleQueryResponse);
+        };
+
+        function handleQueryResponse(response) {
+            if (response.isError()) {
+                alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+                return;
+            }
+
+            window.data = response.getDataTable();
+            draw(window.data);
+        };
+
+        function draw(data) {
+            function addEventListener(control, container, events) {
+                for (var x = 0; x < events.length; x++) {
+                    google.visualization.events.addListener(control, events[x],
+                        function (event) {
+                            //var table = $(container).find(".google-visualization-table-table");
+                            //var tr = $(table).find("tr:eq(0)");
+                            //$(tr).find('td').wrapInner('<div/>').find('div').unwrap().wrap('<th/>');
+                            //$(table).prepend("<thead></thead>");
+                            //$(table).find('thead').append(tr);
+                            //$(table).find('thead >tr').find('th').addClass("text-center");
+                            tableClassHack();
+                        });
+                }
+            };
+
+            var chart = new google.visualization.Table(document.getElementById('columnchart'));
+            //var chart1 = new google.visualization.Table(document.getElementById('Div2'));
+
+            addEventListener(chart, '#columnchart', ['ready']);
+            //addEventListener(chart1, '#Div2', ['ready']);
+            
+            var cols = data.getNumberOfColumns();
+            //aggregation columns
+            var aggregations = [];
+
+            for (var i = noOfGroups; i < cols; i++) {
+                aggregations.push({ 'column': i, 'aggregation': google.visualization.data.sum, 'type': 'number' });
+            }
+
+            for (i = 0; i < noOfGroups; i++) {
+                var groupingFields = [];
+                for (var j = 0; j <= i; j++) {
+                    groupingFields[j] = j;
+                }
+
+                groupingFieldList.push(groupingFields);
+                groupsList[i] = google.visualization.data.group(data, groupingFields, aggregations);
+            }
+
+            groupsList.reverse();
+            groupingFieldList.reverse();
+            //console.log(groupingFieldList);
+
+            //add subtotal rows 
+            i = 0;
+            for (i ; i < groupingFieldList.length ; i++) {
+                var grpCols = groupsList[i].getNumberOfColumns(),
+                    grpRows = groupsList[i].getNumberOfRows();
+                for (j = 0; j < grpRows ; j++) {
+                    var row = [];
+                    var values = [], filters = [];
+                    for (var k = 0; k < groupingFieldList[i].length; k++) {
+                        var val = groupsList[i].getValue(j, k);
+                        values[k] = val;
+                        filters[k] = { column: k, value: val };
+
+                        if (k == groupingFieldList[i].length - 1) {
+                            row[k] = { v: val + " Total", p: { className: 'sub-total-label' } };
+                        }
+
+                        else {
+                            row[k] = { v: '', p: { className: 'sub-total' } };
+                        }
+                    }
+
+                    var hi = groupingFieldList[0].length;
+                    var lo = groupingFieldList[i].length;
+                    //console.log(hi + "," + lo);
+                    //blank fill cells
+                    for (k=lo; k < hi; k++) {
+                        row[k] = { v: '', p: { className: 'sub-total' } };
+                    }
+                    //console.log(grpCols + "," + lo);
+                    //console.log(hi + "," + cols);
+                    for (k = hi; k < cols; k++) {
+                        //console.log(i);
+                        val = groupsList[i].getValue(j, lo++);
+                        row[k] = { v: val, p: { className: 'sub-total' } };
+                    }
+
+                    var subIndices = data.getFilteredRows(filters);
+                    var index = subIndices[subIndices.length - 1] +i +  1;
+                    data.insertRows(index, [row]);
+                }
+            }
+
+            chart.draw(data, {
+                cssClassNames: {
+                    headerRow: 'someclass',
+                    tableRow: 'someclass',
+                    oddTableRow: 'someclass',
+                    selectedTableRow: 'someclass',
+                    hoverTableRow: 'someclass',
+                    headerCell: 'someclass',
+                    tableCell: 'someclass',
+                    rowNumberCell: 'someclass'
+                }
+            });
+
+            //chart1.draw(groupsList[0], {
+            //    page: 'enable',
+            //    pageSize: 10,
+            //    cssClassNames: {
+            //        headerRow: 'someclass',
+            //        tableRow: 'someclass',
+            //        oddTableRow: 'someclass',
+            //        selectedTableRow: 'someclass',
+            //        hoverTableRow: 'someclass',
+            //        headerCell: 'someclass',
+            //        tableCell: 'someclass',
+            //        rowNumberCell: 'someclass'
+            //    }
+            //});
+        };
+
+        google.setOnLoadCallback(visualization);
+    </script>
 </body>
 </html>
