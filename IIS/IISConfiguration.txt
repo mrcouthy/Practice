@@ -1,2 +1,0 @@
-Windows security Permission
-IIS_IUSRS => full control
