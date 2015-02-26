@@ -68,3 +68,5 @@
 /MVC_Onion_DI_EF/Simple/packages
 /MVC_Onion_DI_EF/Simple/Simple.Repository.Tests/obj
 /MVC_Onion_DI_EF/Simple/Simple.Repository.Tests/bin
+
+/WindowsService/MyWindowsService/MyWindowsService.v11.suo
