@@ -20,6 +20,9 @@ namespace Af
             {
                 var contexter = scope.Resolve<IContext>();
                 contexter.DataBase();
+                 
+             
+
             }
             Console.ReadLine();
         }
