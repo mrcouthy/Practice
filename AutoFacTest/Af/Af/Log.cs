@@ -38,10 +38,10 @@ namespace Af
         {
             string s = "";
         }
-        public ILog Log { get; set; }
+        public Lazy<ILog> Log { get; set; }
         public void DataBase()
         {
-            Log.Write();
+            Log.Value.Write();
             Console.Write("database");
         }
     }
