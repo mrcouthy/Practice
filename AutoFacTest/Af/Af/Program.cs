@@ -10,15 +10,16 @@ namespace Af
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces().PropertiesAutowired();
+            //  builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces().PropertiesAutowired();
+            builder.RegisterType<Log>().As<ILog>().InstancePerDependency().PropertiesAutowired().WithParameter("customMessage","Hello constructed!");
+            builder.RegisterType<Context>().As<IContext>().InstancePerDependency().PropertiesAutowired();
 
-            //builder.RegisterType<Log>().As<ILog>().InstancePerDependency().PropertiesAutowired();
             IContainer Container = builder.Build();
+            
             using (var scope = Container.BeginLifetimeScope())
             {
                 var contexter = scope.Resolve<IContext>();
                 contexter.DataBase();
-                //configReader.ConfigString();
             }
             Console.ReadLine();
         }
