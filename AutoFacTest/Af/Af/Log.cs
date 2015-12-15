@@ -8,12 +8,20 @@ namespace Af
         void Write();
     }
 
-    public class Log : ILog
+    public class Tlog
+    {
+        public void OkLog()
+        {
+            Console.WriteLine("Ok log");
+        }
+    }
+    public class Log : Tlog, ILog
     {
         string _LogString = "Log initial message";
 
         public Log(string customMessage)
         {
+            OkLog();
             _LogString = customMessage;
         }
 
