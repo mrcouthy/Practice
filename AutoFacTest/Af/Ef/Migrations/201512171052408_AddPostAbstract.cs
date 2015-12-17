@@ -8,6 +8,7 @@ namespace Ef.Migrations
         public override void Up()
         {
             AddColumn("dbo.Posts", "Abstract", c => c.String());
+            Sql("UPDATE dbo.Posts SET Abstract = LEFT(Content, 100) WHERE Abstract IS NULL");
         }
         
         public override void Down()
