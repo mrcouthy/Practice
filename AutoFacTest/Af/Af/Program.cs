@@ -12,13 +12,15 @@ namespace Af
 
             //  builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces().PropertiesAutowired();
             builder.RegisterType<Log>().As<ILog>().InstancePerDependency().PropertiesAutowired().WithParameter("customMessage","Hello constructed!");
-            builder.RegisterType<Context>().As<IContext>().InstancePerDependency().PropertiesAutowired();
+            builder.RegisterType<Context>().InstancePerDependency().PropertiesAutowired();
+          
+                
 
             IContainer Container = builder.Build();
             
             using (var scope = Container.BeginLifetimeScope())
             {
-                var contexter = scope.Resolve<IContext>();
+                var contexter = scope.Resolve<Context>();
                 contexter.DataBase();
                  
              
