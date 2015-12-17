@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Ef.Migrations;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -9,7 +11,8 @@ namespace MigrationsDemo
     {
         static void Main(string[] args)
         {
-      ///  https://msdn.microsoft.com/en-us/data/jj591621
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogContext, Configuration>());
+            ///  https://msdn.microsoft.com/en-us/data/jj591621
             using (var db = new BlogContext())
             {
                 db.Blogs.Add(new Blog { Name = "Another Blog ",Url="s" });
