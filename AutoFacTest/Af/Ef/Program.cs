@@ -9,9 +9,10 @@ namespace MigrationsDemo
     {
         static void Main(string[] args)
         {
+      ///  https://msdn.microsoft.com/en-us/data/jj591621
             using (var db = new BlogContext())
             {
-                db.Blogs.Add(new Blog { Name = "Another Blog " });
+                db.Blogs.Add(new Blog { Name = "Another Blog ",Url="s" });
                 db.SaveChanges();
 
                 foreach (var blog in db.Blogs)
