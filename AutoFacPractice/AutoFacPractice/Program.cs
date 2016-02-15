@@ -30,6 +30,7 @@ namespace AutoFacPractice
             // of our dependency injection. We'll define that
             // in a bit.
             WriteDate();
+            Console.ReadLine();
         }
 
         public static void WriteDate()
@@ -43,6 +44,7 @@ namespace AutoFacPractice
                 var configReader = Container.Resolve<IConfigReader>(new NamedParameter("connfigSectionName", "b"));
                
                 configReader.ConfigString();
+                
             }
         }
     }

@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace WpfApplication1.Bindings
+{
+
+
+    //    WPF provides a type of list that will do just that. It's called ObservableCollection, 
+    //and you use it much like a regular List<T>, with only a few differences.
+
+    //In the final example, which you will find below, we have simply replaced the 
+    //List<User> with an ObservableCollection<User> - that's all it takes! This 
+    //will make the Add and Delete button work, but it won't do anything for the
+    //"Change name" button, because the change will happen on the bound data object itself and 
+    //not the source list - the second step will handle that scenario though.
+
+    /// <summary>
+    /// Interaction logic for ObservableAndNotify.xaml
+    /// </summary>
+    public partial class ObservableAndNotify : Window
+    {
+        private ObservableCollection<User> users = new ObservableCollection<User>();
+
+        public ObservableAndNotify()
+                {
+                        InitializeComponent();
+
+                        users.Add(new User() { Name = "John Doe" });
+                        users.Add(new User() { Name = "Jane Doe" });
+
+                        lbUsers.ItemsSource = users;
+                }
+
+                private void btnAddUser_Click(object sender, RoutedEventArgs e)
+                {
+                        users.Add(new User() { Name = "New user" });
+                }
+
+                private void btnChangeUser_Click(object sender, RoutedEventArgs e)
+                {
+                        if(lbUsers.SelectedItem != null)
+                                (lbUsers.SelectedItem as User).Name = "Random Name";
+                }
+
+                private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+                {
+                        if(lbUsers.SelectedItem != null)
+                                users.Remove(lbUsers.SelectedItem as User);
+                }
+        }
+
+        public class User : INotifyPropertyChanged
+        {
+                private string name;
+                public string Name {
+                        get { return this.name; }
+                        set
+                        {
+                                if(this.name != value)
+                                {
+                                        this.name = value;
+                                        this.NotifyPropertyChanged("Name");
+                                }
+                        }
+                }
+
+                public event PropertyChangedEventHandler PropertyChanged;
+
+                public void NotifyPropertyChanged(string propName)
+                {
+                        if(this.PropertyChanged != null)
+                                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                }
+        }
+}
