@@ -6,7 +6,7 @@
   <ItemGroup>
     <Compile Include="helloworld.cs" />
   </ItemGroup>
-  <Target Name="Build">
+  <Target Name="Build" Inputs="@(Compile)" Outputs="$(OutputPath)$(AssemblyName).exe">
     <MakeDir Directories="$(OutputPath)" Condition="!Exists('$(OutputPath)')" />
     <Csc Sources="@(Compile)" OutputAssembly="$(OutputPath)$(AssemblyName).exe" />
   </Target>
