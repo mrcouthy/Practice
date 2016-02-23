@@ -39,5 +39,13 @@ namespace scrap
             Console.WriteLine("Slow operation about to finish on thread id {0}", Thread.CurrentThread.ManagedThreadId);
             return "This is very slow...";
         }
+
+        public void SecondFoo()
+        {
+            Console.WriteLine("ho ho ho ho");
+            Console.WriteLine(string.Format("I am on thread {0}", Thread.CurrentThread.ManagedThreadId));
+            Thread.Sleep(2000);
+            Console.WriteLine("eh eh eh eh ");
+        }
     }
 }
