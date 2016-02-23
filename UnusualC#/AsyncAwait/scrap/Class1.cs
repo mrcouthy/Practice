@@ -48,4 +48,15 @@ namespace scrap
             Console.WriteLine("eh eh eh eh ");
         }
     }
+
+    public class Operation2
+    {
+        public Operation2()
+        {
+            Console.WriteLine("I can be in Constructor too");
+            Thread.Sleep(5555);
+            Console.WriteLine(string.Format("Did you see me in constructor at thread {0}?",Thread.CurrentThread.ManagedThreadId));
+
+        }
+    }
 }
