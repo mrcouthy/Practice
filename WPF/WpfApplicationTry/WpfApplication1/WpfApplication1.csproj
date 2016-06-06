@@ -96,6 +96,9 @@
     <Compile Include="RadioButtonSample.xaml.cs">
       <DependentUpon>RadioButtonSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TabSample.xaml.cs">
+      <DependentUpon>TabSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TextBlockSample.xaml.cs">
       <DependentUpon>TextBlockSample.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RadioButtonSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabSample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
