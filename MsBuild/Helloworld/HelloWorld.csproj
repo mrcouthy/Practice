@@ -12,7 +12,8 @@
 	<!-- Run the Visual C# compilation using input files of type CSFile -->
     <Csc Sources="@(Compile)" OutputAssembly="$(OutputPath)$(AssemblyName).exe" />
 	<!-- Log the file name of the output file -->
-	<Message Text="The output file is Dj"/>
+	 <Message Text="Configuration is $(Configuration)" />
+     <Message Text="MSBuildToolsPath is $(MSBuildToolsPath)" />
   </Target>
   <Target Name="Clean" >
     <Delete Files="$(OutputPath)$(AssemblyName).exe" />
