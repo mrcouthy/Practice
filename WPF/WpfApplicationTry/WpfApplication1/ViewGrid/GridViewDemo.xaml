@@ -3,6 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="GridViewDemp" Height="300" Width="300">
     <Grid>
-        <DataGrid Name="dgSimple"></DataGrid>
+        <DataGrid Name="dgUsers" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+
+                <DataGridTemplateColumn Header="Birthday">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Sily Number" Binding="{Binding Itis}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
