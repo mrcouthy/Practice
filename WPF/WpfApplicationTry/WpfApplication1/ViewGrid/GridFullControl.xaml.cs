@@ -22,7 +22,7 @@ namespace WpfApplication1.ViewGrid
         {
             InitializeComponent();
             List<User> users = new List<User>();
-            users.Add(new User() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) });
+            users.Add(new User() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23), ImageUrl = "http://www.wpf-tutorial.com/images/misc/john_doe.jpg" });
             users.Add(new User() { Id = 2, Name = "Jane Doe", Birthday = new DateTime(1974, 1, 17) });
             users.Add(new User() { Id = 3, Name = "Sammy Doe", Birthday = new DateTime(1991, 9, 2) });
 
@@ -37,12 +37,6 @@ namespace WpfApplication1.ViewGrid
 
         public DateTime Birthday { get; set; }
 
-        public string Details
-        {
-            get
-            {
-                return String.Format("{0} was born on {1} and this is a long description of the selected person!", this.Name, this.Birthday.ToLongDateString());
-            }
-        }
+        public string ImageUrl { get; set; }
     }
 }
