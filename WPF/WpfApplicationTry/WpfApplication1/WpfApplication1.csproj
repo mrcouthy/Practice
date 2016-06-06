@@ -108,6 +108,9 @@
     <Compile Include="ToolTipSample.xaml.cs">
       <DependentUpon>ToolTipSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewGrid\GridFullControl.xaml.cs">
+      <DependentUpon>GridFullControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewGrid\GridViewDemo.xaml.cs">
       <DependentUpon>GridViewDemo.xaml</DependentUpon>
     </Compile>
@@ -194,6 +197,10 @@
     <Page Include="ToolTipSample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewGrid\GridFullControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewGrid\GridViewDemo.xaml">
       <SubType>Designer</SubType>
